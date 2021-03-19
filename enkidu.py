@@ -1,5 +1,4 @@
 #!/usr/bin/python3 -u
-
 import logging
 import uuid
 from logging.config import dictConfig
@@ -11,6 +10,7 @@ from pygments import highlight
 from pygments.formatters.html import HtmlFormatter
 from pygments.formatters.img import JpgImageFormatter
 from pygments.lexers import guess_lexer
+from pygments.styles import get_all_styles, get_style_by_name
 
 from model.PrivateHighlightTask import PrivateHighlightTask
 from model.taskfactory import build_task
@@ -106,8 +106,8 @@ def generate_targets(code):
   html_file_path = html_store + "/" + html_file_name
   img_url = enkidu_url + '/img/' + jpg_file_name
   html_url = enkidu_url + '/html/' + html_file_name
-  jpg_formatter = JpgImageFormatter()
-  html_formatter = HtmlFormatter()
+  jpg_formatter = JpgImageFormatter(style=get_style_by_name('solarized-light'))
+  html_formatter = HtmlFormatter(style=get_style_by_name('solarized-light'))
   html_formatter.noclasses = True
   html_formatter.linenos = True
   lexer = guess_lexer(code.encode())

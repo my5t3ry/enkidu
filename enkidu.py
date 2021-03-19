@@ -107,7 +107,7 @@ def generate_targets(code):
   html_formatter = HtmlFormatter()
   html_formatter.noclasses = True
   html_formatter.linenos = True
-  lexer = guess_lexer(code)
+  lexer = guess_lexer(code.encode())
   jpg_result = highlight(code, lexer, jpg_formatter)
   html_result = highlight(code, lexer, html_formatter)
   open(img_file_path, 'wb').write(jpg_result)

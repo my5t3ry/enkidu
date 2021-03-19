@@ -61,35 +61,9 @@ def send_async_response(code, space_name):
   result = highlight(code, guess_lexer(code), formatter)
   spaces_list = chat.spaces().list().execute()
   open(file_name, 'wb').write(result)
-  response = chat.spaces().messages().create(
-      spaces_list['spaces'][0]['name'],
-      body={
-        "cards": [
-          {
-            "header": {
-              "title": "ChatBot",
-              "imageUrl": img_url,
-
-            },
-            "sections": [
-              {
-                "widgets": [
-                  {
-                    "image": {
-                      "imageUrl": img_url,
-                      "onClick": {
-                        "openLink": {
-                          "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }).execute()
+  chat.spaces().messages().create(
+      parent=spaces_list['spaces'][0]['name'],
+      body="test").execute()
 
 
 # [END async-response]

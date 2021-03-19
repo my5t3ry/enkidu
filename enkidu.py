@@ -63,11 +63,12 @@ def home_post():
 
 def send_async_response(code, space_name):
   cur_uuid = uuid.uuid4().hex
-  file_name = cur_uuid + ".jpg"
-  img_file_path = img_store + "/" + file_name
-  html_file_path = html_store + "/" + file_name
-  img_url = enkidu_url + '/img/' + file_name
-  html_url = enkidu_url + '/html/' + file_name
+  jpg_file_name = cur_uuid + ".jpg"
+  html_file_name = cur_uuid + ".html"
+  img_file_path = img_store + "/" + jpg_file_name
+  html_file_path = html_store + "/" + html_file_name
+  img_url = enkidu_url + '/img/' + jpg_file_name
+  html_url = enkidu_url + '/html/' + html_file_name
   jpg_formatter = JpgImageFormatter()
   html_formatter = HtmlFormatter()
 
@@ -76,6 +77,8 @@ def send_async_response(code, space_name):
   html_result = highlight(code, lexer, html_formatter)
   spaces_list = chat.spaces().list().execute()
   open(img_file_path, 'wb').write(jpg_result)
+  with open(html_file_path, "w") as f:
+    f.write('Hello World')
   open(html_file_path, 'wb').write(html_result)
   chat.spaces().messages().create(
       parent=spaces_list['spaces'][1]['name'],

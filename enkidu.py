@@ -4,8 +4,8 @@ import uuid
 from flask import Flask, request, json, send_from_directory, abort
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
-from pandas.io.formats.html import HTMLFormatter
 from pygments import highlight
+from pygments.formatters.html import HtmlFormatter
 from pygments.formatters.img import JpgImageFormatter
 from pygments.lexers import guess_lexer
 
@@ -69,7 +69,7 @@ def send_async_response(code, space_name):
   img_url = enkidu_url + '/img/' + file_name
   html_url = enkidu_url + '/html/' + file_name
   jpg_formatter = JpgImageFormatter()
-  html_formatter = HTMLFormatter()
+  html_formatter = HtmlFormatter()
 
   lexer = guess_lexer(code)
   jpg_result = highlight(code, lexer, jpg_formatter)

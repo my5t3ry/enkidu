@@ -30,7 +30,6 @@ def home_post():
   event_data = request.get_json()
 
   resp = None
-  logging.info('Event received' + json.jsonify(event_data))
   if event_data['type'] == 'REMOVED_FROM_SPACE':
     logging.info('Bot removed from  %s', event_data['space']['name'])
     return json.jsonify({})

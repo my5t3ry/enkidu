@@ -60,8 +60,7 @@ def send_async_response(code, space_name):
   formatter = JpgImageFormatter()
   result = highlight(code, guess_lexer(code), formatter)
 
-  with open(file_name, "w") as f:
-    f.write(result)
+  open(file_name, 'wb').write(result)
   response = chat.spaces().messages().create(
       parent=chat['spaces'][0]['name'],
       body={

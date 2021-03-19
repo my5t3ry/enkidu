@@ -52,7 +52,7 @@ def send_async_response(response, space_name):
   cur_uuid = uuid.uuid4().hex
 
   file_name = cur_uuid + ".gif"
-  tmp_file_name = + file_name
+  tmp_file_name = img_store + file_name
 
   pyg = subprocess.check_output(
       "pygmentize -f gif -l python -o " + tmp_file_name + " enkidu.py",

@@ -48,3 +48,46 @@ def get_tasks():
 
 
 
+
+
+uuid = uuid.uuid4().hex
+
+file_name = uuid + ".gif"
+tmp_file_name = '/var/tmp/' + file_name
+
+pyg = subprocess.check_output(
+    "pygmentize -f gif -l python -o "+tmp_file_name+" enkidu.py", shell=True)
+words_str = subprocess.check_output(
+    "scp " + tmp_file_name + " root@mikodump.org:/var/www/data/", shell=True)
+url = "https://data.shitkatapult.org/" + file_name
+chat_service.spaces().members().list(parent=spaces_list['spaces'][0]['name']).execute()
+chat_service.spaces().messages().get(name="spaces/sVBZ8wAAAAE/messages/*").execute()
+response = chat_service.spaces().messages().create(
+    parent=spaces_list['spaces'][0]['name'],
+    body={
+      "cards": [
+        {
+          "header": {
+            "title": "ChatBot",
+            "imageUrl": "https://www.gstatic.com/images/icons/material/system/1x/face_black_24dp.png",
+
+          },
+          "sections": [
+            {
+              "widgets": [
+                {
+                  "image": {
+                    "imageUrl": url,
+                    "onClick": {
+                      "openLink": {
+                        "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }).execute()

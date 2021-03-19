@@ -1,6 +1,5 @@
 import logging
 import os
-import subprocess
 import uuid
 from sys import path
 
@@ -9,7 +8,7 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from pygments import highlight
 from pygments.formatters.img import JpgImageFormatter
-from pygments.lexers import guess_lexer, get_lexer_by_name
+from pygments.lexers import guess_lexer
 
 app = Flask(__name__)
 SCOPES = ['https://www.googleapis.com/auth/chat.bot']
@@ -21,6 +20,7 @@ chat = build('chat', 'v1', credentials=credentials)
 
 img_store = '/root/img/'
 tmp_dode = '/root/tmp/tmp.code'
+enkidu_url = 'https://enkidu.dgm-it.de/'
 
 
 @app.route('/img/<path:path>')
@@ -54,21 +54,21 @@ def home_post():
 
 def send_async_response(code, space_name):
   cur_uuid = uuid.uuid4().hex
-
   file_name = cur_uuid + ".jpg"
+  img_url = enkidu_url + '/img/' + file_name
   tmp_file_name = img_store + file_name
   formatter = JpgImageFormatter()
   result = highlight(code, guess_lexer(code), formatter)
-
+  spaces_list = chat.spaces().list().execute()
   open(file_name, 'wb').write(result)
   response = chat.spaces().messages().create(
-      parent=chat['spaces'][0]['name'],
+      spaces_list['spaces'][0]['name'],
       body={
         "cards": [
           {
             "header": {
               "title": "ChatBot",
-              "imageUrl": "https://www.gstatic.com/images/icons/material/system/1x/face_black_24dp.png",
+              "imageUrl": img_url,
 
             },
             "sections": [
@@ -76,7 +76,7 @@ def send_async_response(code, space_name):
                 "widgets": [
                   {
                     "image": {
-                      "imageUrl": url,
+                      "imageUrl": img_url,
                       "onClick": {
                         "openLink": {
                           "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"

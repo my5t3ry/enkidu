@@ -7,6 +7,9 @@ from sys import path
 from flask import Flask, request, json, send_file
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+from pygments import highlight
+from pygments.formatters.img import JpgImageFormatter
+from pygments.lexers import guess_lexer, get_lexer_by_name
 
 app = Flask(__name__)
 SCOPES = ['https://www.googleapis.com/auth/chat.bot']
@@ -48,18 +51,20 @@ def home_post():
 
 # [START async-response]
 
+
 def send_async_response(code, space_name):
   cur_uuid = uuid.uuid4().hex
 
-  file_name = cur_uuid + ".gif"
+  file_name = cur_uuid + ".jpg"
   tmp_file_name = img_store + file_name
-  with open(tmp_dode, "w") as f:
-    f.write(code)
-  pyg = subprocess.check_output(
-      "pygmentize -f gif -l python -o " + tmp_file_name + " " + tmp_dode,
-      shell=True)
+  guessed = guess_lexer(code)
+  logging.info("guessed language:" + guessed)
+  lexer = get_lexer_by_name(guessed, stripall=True)
+  formatter = JpgImageFormatter()
+  result = highlight(code, lexer, formatter)
 
-  url = "https://enkidu.dgm-it.de/img/" + file_name
+  with open(file_name, "w") as f:
+    f.write(result)
   response = chat.spaces().messages().create(
       parent=chat['spaces'][0]['name'],
       body={

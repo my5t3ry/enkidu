@@ -1,6 +1,5 @@
 import logging
 import uuid
-
 from flask import Flask, request, json, send_from_directory, abort
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -9,7 +8,30 @@ from pygments.formatters.html import HtmlFormatter
 from pygments.formatters.img import JpgImageFormatter
 from pygments.lexers import guess_lexer
 
+
+
+from logging.config import dictConfig
+
+dictConfig({
+  'version': 1,
+  'formatters': {'default': {
+    'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
+  }},
+  'handlers': {'wsgi': {
+    'class': 'logging.StreamHandler',
+    'stream': 'ext://sys.stdout',
+    'formatter': 'default'
+  }},
+  'root': {
+    'level': 'INFO',
+    'handlers': ['wsgi']
+  }
+})
+
+
+
 app = Flask(__name__)
+
 SCOPES = ['https://www.googleapis.com/auth/chat.bot']
 SERVICE_ACCOUNT_FILE = 'cred.json'
 

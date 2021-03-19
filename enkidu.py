@@ -78,8 +78,7 @@ def send_async_response(code, space_name):
   spaces_list = chat.spaces().list().execute()
   open(img_file_path, 'wb').write(jpg_result)
   with open(html_file_path, "w") as f:
-    f.write('Hello World')
-  open(html_file_path, 'wb').write(html_result)
+    f.write(html_result)
   chat.spaces().messages().create(
       parent=spaces_list['spaces'][1]['name'],
       body={

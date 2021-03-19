@@ -1,10 +1,9 @@
-
 import logging
-from googleapiclient.discovery import build
-from flask import Flask, render_template, request, json
-import google.auth
-from google.oauth2 import service_account
+import subprocess
 
+from flask import Flask, request, json, send_file
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
 
 app = Flask(__name__)
 SCOPES = ['https://www.googleapis.com/auth/chat.bot']
@@ -13,6 +12,15 @@ SERVICE_ACCOUNT_FILE = 'cred.json'
 credentials = service_account.Credentials.from_service_account_file(
     SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 chat = build('chat', 'v1', credentials=credentials)
+
+
+@app.route('/img')
+def get_image():
+  if request.args.get('type') == '1':
+    filename = 'ok.gif'
+  else:
+    filename = 'error.gif'
+  return send_file(filename, mimetype='image/gif')
 
 
 @app.route('/', methods=['POST'])
@@ -32,24 +40,59 @@ def home_post():
     logging.info('Bot removed from  %s', event_data['space']['name'])
     return json.jsonify({})
 
-  resp = format_response(event_data)
-  space_name = event_data['space']['name']
-  send_async_response(resp, space_name)
+  if event_data['type'] == 'MESSAGE':
+    code = event_data['message']['text']
+    resp = format_response(event_data)
+    space_name = event_data['space']['name']
+    send_async_response(code, space_name)
 
   # Return empty jsom respomse simce message already sent via REST API
   return json.jsonify({})
 
+
 # [START async-response]
 
 def send_async_response(response, space_name):
-  """Sends a response back to the Hangouts Chat room asynchronously.
-  Args:
-    response: the response payload
-    space_name: The URL of the Hangouts Chat room
-  """
-  chat.spaces().messages().create(
-      parent=space_name,
-      body=response).execute()
+  uuid = uuid.uuid4().hex
+
+  file_name = uuid + ".gif"
+  tmp_file_name = '/root/img/' + file_name
+
+  pyg = subprocess.check_output(
+      "pygmentize -f gif -l python -o " + tmp_file_name + " enkidu.py",
+      shell=True)
+
+  url = "https://enkidu.dgm-it.de/img/" + file_name
+  response = chat.spaces().messages().create(
+      parent=chat['spaces'][1]['name'],
+      body={
+        "cards": [
+          {
+            "header": {
+              "title": "ChatBot",
+              "imageUrl": "https://www.gstatic.com/images/icons/material/system/1x/face_black_24dp.png",
+
+            },
+            "sections": [
+              {
+                "widgets": [
+                  {
+                    "image": {
+                      "imageUrl": url,
+                      "onClick": {
+                        "openLink": {
+                          "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }).execute()
+
 
 # [END async-response]
 
@@ -73,7 +116,8 @@ def format_response(event):
     text = 'Thanks for adding me to a DM, {}!'.format(sender_name)
 
   elif event_type == 'MESSAGE':
-    text = 'Your message, {}: "{}"'.format(sender_name, event['message']['text'])
+    text = 'Your message, {}: "{}"'.format(sender_name,
+                                           event['message']['text'])
 
   response = {'text': text}
 
@@ -84,6 +128,7 @@ def format_response(event):
     response['thread'] = thread_id
 
   return response
+
 
 # [END async-bot]
 

@@ -1,9 +1,7 @@
 import logging
-import os
 import uuid
-from sys import path
 
-from flask import Flask, request, json, send_file, send_from_directory, abort
+from flask import Flask, request, json, send_from_directory, abort
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from pygments import highlight
@@ -29,7 +27,6 @@ def image(filename):
     return send_from_directory('/root/img/', filename)
   except IOError:
     abort(404)
-
 
 
 @app.route('/', methods=['POST'])
@@ -60,7 +57,9 @@ def send_async_response(code, space_name):
   file_path = img_store + "/" + file_name
   img_url = enkidu_url + '/img/' + file_name
   formatter = JpgImageFormatter()
-  result = highlight(code, guess_lexer(code), formatter)
+  lexer = guess_lexer(code)
+  lexer.name
+  result = highlight(code, lexer, formatter)
   spaces_list = chat.spaces().list().execute()
   open(file_path, 'wb').write(result)
   chat.spaces().messages().create(
@@ -69,7 +68,7 @@ def send_async_response(code, space_name):
         "cards": [
           {
             "header": {
-              "title": "ChatBot",
+              "title": "enkidu has some " + lexer.name.lower() + " for you",
               "imageUrl": "https://www.gstatic.com/images/icons/material/system/1x/face_black_24dp.png",
 
             },
@@ -81,7 +80,7 @@ def send_async_response(code, space_name):
                       "imageUrl": img_url,
                       "onClick": {
                         "openLink": {
-                          "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                          "url": img_url
                         }
                       }
                     }

@@ -59,7 +59,7 @@ def send_async_response(response, space_name):
 
   url = "https://enkidu.dgm-it.de/img/" + file_name
   response = chat.spaces().messages().create(
-      parent=chat['spaces'][1]['name'],
+      parent=chat['spaces'][0]['name'],
       body={
         "cards": [
           {

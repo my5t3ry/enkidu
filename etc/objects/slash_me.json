@@ -1,38 +1,20 @@
 {
   "type": "MESSAGE",
-  "eventTime": "2021-03-19T16:27: 25.114191Z",
+  "eventTime": "2021-03-19T18:58:27.235487Z",
   "message": {
-    "name": "spaces/sVBZ8wAAAAE/messages/eG7jSJOMYb8.eG7jSJOMYb8",
+    "name": "spaces/sVBZ8wAAAAE/messages/d40PxbBYjqU.d40PxbBYjqU",
     "sender": {
       "name": "users/115408569395812721682",
       "displayName": "Sascha Bast",
-      "avatarUrl": "https: //lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
+      "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
       "email": "sascha.bast@dgm-kommunikation.de",
       "type": "HUMAN",
       "domainId": "3f8yvml"
     },
-    "createTime": "2021-03-19T16:27:25.114191Z",
-    "text": "/me \ndef init():\n  global words\n  global probs\n  global word_freq_dict\n  global Total\n  words_str = subprocess.check_output(\n      \"echo \\\"$(cat /home/my5t3ry/.zsh_history)\\\"\", shell=True)",
-    "annotations": [
-      {
-        "type": "SLASH_COMMAND",
-        "startIndex": 0,
-        "length": 3,
-        "slashCommand": {
-          "bot": {
-            "name": "users/116251110050550395837",
-            "displayName": "enkidu",
-            "avatarUrl": "https://lh3.googleusercontent.com/proxy/RUpiisY640Xp9Upw0LJSuxoqMQCfyA7YGMptfzj0r52zphR2EPTh8fzxL_FmuG-Cn2NtgNCo2wwFf7hOBs_Yjtn2T1TAPZZzYaE5rDCV1DYNCXjxzQ",
-            "type": "BOT"
-          },
-          "type": "INVOKE",
-          "commandName": "/me",
-          "commandId": "1"
-        }
-      }
-    ],
+    "createTime": "2021-03-19T18:58:27.235487Z",
+    "text": "/me @app.route('/html/<path:filename>')\ndef html(filename):\n  try:\n    return send_from_directory('/root/html/', filename)\n  except IOError:\n    abort(404)\n\n\ndef resolve_target(event_data, cur_task, cur_spaces_ctx):\n  if isinstance(cur_task, PrivateHighlightTask):\n    return event_data['space']['name']\n  else:\n    for cur_space in cur_spaces_ctx:\n      if cur_task.target_display_name.lower() in cur_space[\n        'displayName'].lower():\n        return cur_space['name']",
     "thread": {
-      "name": "spaces/sVBZ8wAAAAE/threads/eG7jSJOMYb8",
+      "name": "spaces/sVBZ8wAAAAE/threads/d40PxbBYjqU",
       "retentionSettings": {
         "state": "PERMANENT"
       }
@@ -42,10 +24,7 @@
       "type": "DM",
       "singleUserBotDm": true
     },
-    "argumentText": " \ndef init():\n  global words\n  global probs\n  global word_freq_dict\n  global Total\n  words_str = subprocess.check_output(\n      \"echo \\\"$(cat /home/my5t3ry/.zsh_history)\\\"\", shell=True)",
-    "slashCommand": {
-      "commandId": "1"
-    }
+    "argumentText": "/me @app.route('/html/<path:filename>')\ndef html(filename):\n  try:\n    return send_from_directory('/root/html/', filename)\n  except IOError:\n    abort(404)\n\n\ndef resolve_target(event_data, cur_task, cur_spaces_ctx):\n  if isinstance(cur_task, PrivateHighlightTask):\n    return event_data['space']['name']\n  else:\n    for cur_space in cur_spaces_ctx:\n      if cur_task.target_display_name.lower() in cur_space[\n        'displayName'].lower():\n        return cur_space['name']"
   },
   "user": {
     "name": "users/115408569395812721682",
@@ -60,5 +39,5 @@
     "type": "DM",
     "singleUserBotDm": true
   },
-  "configCompleteRedirectUrl": "https://chat.google.com/api/bot_config_complete?token=AAJCfVV9NMTP9XW_MiLWLBv5PGOxGRUdjcIQq-p4-779L18hmHuNRq1Y9UaziGstzRf3_vWw4TAsuXGrxKDdyPX9qAikU1C9pMaivotd-wPqekw6zSzhhgakhKaES_9Jd7UMGAQi3YDCm6jnlAe2k_8%3D"
+  "configCompleteRedirectUrl": "https://chat.google.com/api/bot_config_complete?token=AAJCfVUBsDTrrSOv26KVrrdli7jW1Yt7LDn9JcctjP1Mb6XIBKSyod20WU-97oy1uodbtqtWQG-4125zITpP_2NtFIVxPbS8ZaTQ_20QRH5o1_nc51RajD802IgFA1LfoyiLjRcoC5g7cJ8he_2xg0g%3D"
 }

@@ -10,7 +10,7 @@ def build_task(event):
         strip_slash_command(event))
   else:
     return PrivateHighlightTask(
-        event['message'])
+        event['message']['text'])
 
 
 def strip_slash_command(event):

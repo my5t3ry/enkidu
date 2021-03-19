@@ -12,6 +12,9 @@ from pygments.formatters.html import HtmlFormatter
 from pygments.formatters.img import JpgImageFormatter
 from pygments.lexers import guess_lexer
 
+from model.PrivateHighlightTask import PrivateHighlightTask
+from model.taskfactory import build_task
+
 dictConfig({
   'version': 1,
   'formatters': {'default': {
@@ -32,15 +35,14 @@ app = Flask(__name__)
 
 SCOPES = ['https://www.googleapis.com/auth/chat.bot']
 SERVICE_ACCOUNT_FILE = 'cred.json'
-
-credentials = service_account.Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-chat = build('chat', 'v1', credentials=credentials)
-
 img_store = '/root/img/'
 html_store = '/root/html/'
 tmp_dode = '/root/tmp/tmp.code'
 enkidu_url = 'https://enkidu.dgm-it.de'
+
+credentials = service_account.Credentials.from_service_account_file(
+    SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+chat = build('chat', 'v1', credentials=credentials)
 
 
 @app.route('/img/<path:filename>')
@@ -59,32 +61,38 @@ def html(filename):
     abort(404)
 
 
+def resolve_target(event_data, cur_task, cur_spaces_ctx):
+  if isinstance(cur_task, PrivateHighlightTask):
+    return event_data['space']['name']
+  else:
+    for cur_space in cur_spaces_ctx:
+      if cur_task.target_display_name in cur_space['displayName']:
+        return cur_space['name']
+
+
 @app.route('/', methods=['POST'])
 def home_post():
   event_data = request.get_json()
+  cur_spaces_ctx = chat.spaces().list().execute()['spaces']
+  logging.info("Current bot spaces ['%s']", json.dumps(cur_spaces_ctx))
+  cur_task = build_task(event_data)
   logging.info("received event ['%s']", event_data)
-  if event_data['type'] == 'REMOVED_FROM_SPACE':
-    logging.info('Bot removed from  %s', event_data['space']['name'])
-    return json.jsonify({})
+  target_space = resolve_target(event_data, cur_task, cur_spaces_ctx)
+  card = build_targets(cur_task)
+  chat.spaces().messages().create(
+      parent=target_space,
+      body=card).execute()
 
-  if event_data['type'] == 'MESSAGE':
-    code = event_data['message']['text']
-    send_async_response(code)
-
-  # Return empty jsom respomse simce message already sent via REST API
   return json.jsonify({})
 
 
-# [START async-response]
+def generate_moc():
+  return "", "", ""
 
 
-def send_async_response(code):
-  html_url, img_url, lexer = generate_targets(code)
-  spaces_list = chat.spaces().list().execute()
-  logging.info("Current bot spaces ['%s']", json.dumps(spaces_list))
-  chat.spaces().messages().create(
-      parent=spaces_list['spaces'][0]['name'],
-      body=build_card(html_url, img_url, lexer)).execute()
+def build_targets(cur_task):
+  html_url, img_url, lexer = generate_targets(cur_task.code)
+  return generate_card(html_url, img_url, lexer)
 
 
 def generate_targets(code):
@@ -108,7 +116,7 @@ def generate_targets(code):
   return html_url, img_url, lexer
 
 
-def build_card(html_url, img_url, lexer):
+def generate_card(html_url, img_url, lexer):
   return {
     "cards": [
       {
@@ -137,30 +145,5 @@ def build_card(html_url, img_url, lexer):
   }
 
 
-def format_response(event):
-  event_type = event['type']
-
-  text = ""
-  sender_name = event['user']['displayName']
-
-  if event_type == 'ADDED_TO_SPACE' and event['space']['type'] == 'ROOM':
-    text = 'Thanks for adding me to {}!'.format(event['space']['displayName'])
-
-  elif event_type == 'ADDED_TO_SPACE' and event['space']['type'] == 'DM':
-    text = 'Thanks for adding me to a DM, {}!'.format(sender_name)
-
-  elif event_type == 'MESSAGE':
-    text = 'Your message, {}: "{}"'.format(sender_name,
-                                           event['message']['text'])
-
-  response = {'text': text}
-
-  if event_type == 'MESSAGE' and event['message']['thread'] is not None:
-    thread_id = event['message']['thread']
-    response['thread'] = thread_id
-
-  return response
-
-
 if __name__ == '__main__':
-  app.run(host='10.29.85.74', port=80, debug=True)
+  app.run(host='0.0.0.0', port=80, debug=True)

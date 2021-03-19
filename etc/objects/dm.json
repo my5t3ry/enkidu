@@ -1,0 +1,43 @@
+{
+  "type": "MESSAGE",
+  "eventTime": "2021-03-19T16:23:54.564239Z",
+  "message": {
+    "name": "spaces/sVBZ8wAAAAE/messages/F01z-Uh7PZI.F01z-Uh7PZI",
+    "sender": {
+      "name": "users/115408569395812721682",
+      "displayName": "Sascha Bast",
+      "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
+      "email": "sascha.bast@dgm-kommunikation.de",
+      "type": "HUMAN",
+      "domainId": "3f8yvml"
+    },
+    "createTime": "2021-03-19T16:23:54.564239Z",
+    "text": "def init():\n  global words\n  global probs\n  global word_freq_dict\n  global Total\n  words_str = subprocess.check_output(\n      \"echo \\\"$(cat /home/my5t3ry/.zsh_history)\\\"\", shell=True)",
+    "thread": {
+      "name": "spaces/sVBZ8wAAAAE/threads/F01z-Uh7PZI",
+      "retentionSettings": {
+        "state": "PERMANENT"
+      }
+    },
+    "space": {
+      "name": "spaces/sVBZ8wAAAAE",
+      "type": "DM",
+      "singleUserBotDm": true
+    },
+    "argumentText": "def init():\n  global words\n  global probs\n  global word_freq_dict\n  global Total\n  words_str = subprocess.check_output(\n      \"echo \\\"$(cat /home/my5t3ry/.zsh_history)\\\"\", shell=True)"
+  },
+  "user": {
+    "name": "users/115408569395812721682",
+    "displayName": "Sascha Bast",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
+    "email": "sascha.bast@dgm-kommunikation.de",
+    "type": "HUMAN",
+    "domainId": "3f8yvml"
+  },
+  "space": {
+    "name": "spaces/sVBZ8wAAAAE",
+    "type": "DM",
+    "singleUserBotDm": true
+  },
+  "configCompleteRedirectUrl": "https://chat.google.com/api/bot_config_complete?token=AAJCfVVyhArxdyLxbsk6BTTWWzr7hoyPJdWfl0Ht6sc_8lXv1H4oNHC8IYkvhlz93Vnea2f-e0mOl-K710v5eHYfNTinw2jskirbpNoondvo0zsv4ZGiB8YtnBrIK6kG-ZJBs166siBHUzjNyCN_OCg%3D"
+}

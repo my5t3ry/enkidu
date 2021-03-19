@@ -1,0 +1,19 @@
+{
+  "nextPageToken": "",
+  "spaces": [
+    {
+      "displayName": "",
+      "name": "spaces/sVBZ8wAAAAE",
+      "singleUserBotDm": true,
+      "threaded": false,
+      "type": "DM"
+    },
+    {
+      "displayName": "Entwicklung - Panorama",
+      "name": "spaces/AAAA3I30eIM",
+      "singleUserBotDm": false,
+      "threaded": true,
+      "type": "ROOM"
+    }
+  ]
+}

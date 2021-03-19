@@ -1,0 +1,64 @@
+{
+  "type": "MESSAGE",
+  "eventTime": "2021-03-19T16:27: 25.114191Z",
+  "message": {
+    "name": "spaces/sVBZ8wAAAAE/messages/eG7jSJOMYb8.eG7jSJOMYb8",
+    "sender": {
+      "name": "users/115408569395812721682",
+      "displayName": "Sascha Bast",
+      "avatarUrl": "https: //lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
+      "email": "sascha.bast@dgm-kommunikation.de",
+      "type": "HUMAN",
+      "domainId": "3f8yvml"
+    },
+    "createTime": "2021-03-19T16:27:25.114191Z",
+    "text": "/me \ndef init():\n  global words\n  global probs\n  global word_freq_dict\n  global Total\n  words_str = subprocess.check_output(\n      \"echo \\\"$(cat /home/my5t3ry/.zsh_history)\\\"\", shell=True)",
+    "annotations": [
+      {
+        "type": "SLASH_COMMAND",
+        "startIndex": 0,
+        "length": 3,
+        "slashCommand": {
+          "bot": {
+            "name": "users/116251110050550395837",
+            "displayName": "enkidu",
+            "avatarUrl": "https://lh3.googleusercontent.com/proxy/RUpiisY640Xp9Upw0LJSuxoqMQCfyA7YGMptfzj0r52zphR2EPTh8fzxL_FmuG-Cn2NtgNCo2wwFf7hOBs_Yjtn2T1TAPZZzYaE5rDCV1DYNCXjxzQ",
+            "type": "BOT"
+          },
+          "type": "INVOKE",
+          "commandName": "/me",
+          "commandId": "1"
+        }
+      }
+    ],
+    "thread": {
+      "name": "spaces/sVBZ8wAAAAE/threads/eG7jSJOMYb8",
+      "retentionSettings": {
+        "state": "PERMANENT"
+      }
+    },
+    "space": {
+      "name": "spaces/sVBZ8wAAAAE",
+      "type": "DM",
+      "singleUserBotDm": true
+    },
+    "argumentText": " \ndef init():\n  global words\n  global probs\n  global word_freq_dict\n  global Total\n  words_str = subprocess.check_output(\n      \"echo \\\"$(cat /home/my5t3ry/.zsh_history)\\\"\", shell=True)",
+    "slashCommand": {
+      "commandId": "1"
+    }
+  },
+  "user": {
+    "name": "users/115408569395812721682",
+    "displayName": "Sascha Bast",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
+    "email": "sascha.bast@dgm-kommunikation.de",
+    "type": "HUMAN",
+    "domainId": "3f8yvml"
+  },
+  "space": {
+    "name": "spaces/sVBZ8wAAAAE",
+    "type": "DM",
+    "singleUserBotDm": true
+  },
+  "configCompleteRedirectUrl": "https://chat.google.com/api/bot_config_complete?token=AAJCfVV9NMTP9XW_MiLWLBv5PGOxGRUdjcIQq-p4-779L18hmHuNRq1Y9UaziGstzRf3_vWw4TAsuXGrxKDdyPX9qAikU1C9pMaivotd-wPqekw6zSzhhgakhKaES_9Jd7UMGAQi3YDCm6jnlAe2k_8%3D"
+}

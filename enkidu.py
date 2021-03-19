@@ -57,11 +57,10 @@ def send_async_response(code, space_name):
 
   file_name = cur_uuid + ".jpg"
   tmp_file_name = img_store + file_name
-  guessed = guess_lexer(code)
   logging.info("guessed language:" + guessed)
   lexer = get_lexer_by_name(guessed, stripall=True)
   formatter = JpgImageFormatter()
-  result = highlight(code, lexer, formatter)
+  result = highlight(code, guess_lexer(code), formatter)
 
   with open(file_name, "w") as f:
     f.write(result)

@@ -1,9 +1,8 @@
 import logging
 import os
 import subprocess
-from sys import path
 import uuid
-
+from sys import path
 
 from flask import Flask, request, json, send_file
 from google.oauth2 import service_account
@@ -18,6 +17,7 @@ credentials = service_account.Credentials.from_service_account_file(
 chat = build('chat', 'v1', credentials=credentials)
 
 img_store = '/root/img/'
+tmp_dode = '/root/tmp/tmp.code'
 
 
 @app.route('/img/<path:path>')
@@ -48,14 +48,15 @@ def home_post():
 
 # [START async-response]
 
-def send_async_response(response, space_name):
+def send_async_response(code, space_name):
   cur_uuid = uuid.uuid4().hex
 
   file_name = cur_uuid + ".gif"
   tmp_file_name = img_store + file_name
-
+  with open(tmp_dode, "w") as f:
+    f.write(tmp_dode)
   pyg = subprocess.check_output(
-      "pygmentize -f gif -l python -o " + tmp_file_name + " enkidu.py",
+      "pygmentize -f gif -l python -o " + tmp_file_name + " " + tmp_dode,
       shell=True)
 
   url = "https://enkidu.dgm-it.de/img/" + file_name

@@ -54,7 +54,7 @@ def send_async_response(code, space_name):
   file_name = cur_uuid + ".gif"
   tmp_file_name = img_store + file_name
   with open(tmp_dode, "w") as f:
-    f.write(tmp_dode)
+    f.write(code)
   pyg = subprocess.check_output(
       "pygmentize -f gif -l python -o " + tmp_file_name + " " + tmp_dode,
       shell=True)

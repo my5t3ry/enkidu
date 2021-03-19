@@ -43,15 +43,12 @@ def html(filename):
 def home_post():
   event_data = request.get_json()
   logging.info("received event['%s']".format(event_data))
-  resp = None
   if event_data['type'] == 'REMOVED_FROM_SPACE':
     logging.info('Bot removed from  %s', event_data['space']['name'])
     return json.jsonify({})
 
   if event_data['type'] == 'MESSAGE':
     code = event_data['message']['text']
-    resp = format_response(event_data)
-    space_name = event_data['space']['name']
     send_async_response(code)
 
   # Return empty jsom respomse simce message already sent via REST API
@@ -119,24 +116,17 @@ def build_card(html_url, img_url, lexer):
   }
 
 
-# [END async-response]
 
 def format_response(event):
-  """Determine what response to provide based upon event data.
-  Args:
-    event: A dictionary with the event data.
-  """
 
   event_type = event['type']
 
   text = ""
   sender_name = event['user']['displayName']
 
-  # Case 1: The bot was added to a room
   if event_type == 'ADDED_TO_SPACE' and event['space']['type'] == 'ROOM':
     text = 'Thanks for adding me to {}!'.format(event['space']['displayName'])
 
-  # Case 2: The bot was added to a DM
   elif event_type == 'ADDED_TO_SPACE' and event['space']['type'] == 'DM':
     text = 'Thanks for adding me to a DM, {}!'.format(sender_name)
 
@@ -146,8 +136,6 @@ def format_response(event):
 
   response = {'text': text}
 
-  # The following three lines of code update the thread that raised the event.
-  # Delete them if you want to send the message in a new thread.
   if event_type == 'MESSAGE' and event['message']['thread'] is not None:
     thread_id = event['message']['thread']
     response['thread'] = thread_id
@@ -155,19 +143,6 @@ def format_response(event):
   return response
 
 
-# [END async-bot]
-
-@app.route('/', methods=['GET'])
-def home_get():
-  """Respond to GET requests to this endpoint.
-  This function responds to requests with a simple HTML landing page for this
-  App Engine instance.
-  """
-
-  return '<html><body>foo</body></html>'
-
 
 if __name__ == '__main__':
-  # This is used when running locally. Gunicorn is used to run the
-  # application on Google App Engine. See entrypoint in app.yaml.
   app.run(host='10.29.85.74', port=80, debug=True)

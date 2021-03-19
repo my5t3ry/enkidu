@@ -71,7 +71,8 @@ def send_async_response(code, space_name):
   html_url = enkidu_url + '/html/' + html_file_name
   jpg_formatter = JpgImageFormatter()
   html_formatter = HtmlFormatter()
-
+  html_formatter.noclasses = True
+  html_formatter.linenos = True
   lexer = guess_lexer(code)
   jpg_result = highlight(code, lexer, jpg_formatter)
   html_result = highlight(code, lexer, html_formatter)

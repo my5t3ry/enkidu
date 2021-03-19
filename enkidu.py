@@ -63,7 +63,7 @@ def send_async_response(code, space_name):
   open(file_name, 'wb').write(result)
   chat.spaces().messages().create(
       parent=spaces_list['spaces'][0]['name'],
-      body="test").execute()
+      body={'text': "ssssssss"}).execute()
 
 
 # [END async-response]

@@ -9,7 +9,7 @@ html output -> [https://enkidu.dgm-it.de/html/6a8752576f13411595397eedc06219e7.h
 
 jpeg output -> [https://enkidu.dgm-it.de/img/1e228fb964534d8596d0cb6832f7901f.jpg](https://enkidu.dgm-it.de/img/1e228fb964534d8596d0cb6832f7901f.jpg)
 
-![response example](http://data.shitkatapult.org/enkidu_themed.png)
+![response example](http://data.shitkatapult.org/enkidu_themed2.png)
 
 
 #### commands:

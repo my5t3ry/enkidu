@@ -61,7 +61,15 @@ def home_post():
 # [START async-response]
 
 
-def send_async_response(code, space_name):
+def send_async_response(code):
+  html_url, img_url, lexer, spaces_list = generate_targets(code)
+  spaces_list = chat.spaces().list().execute()
+  chat.spaces().messages().create(
+      parent=spaces_list['spaces'][0]['name'],
+      body=build_card(html_url, img_url, lexer)).execute()
+
+
+def generate_targets(code):
   cur_uuid = uuid.uuid4().hex
   jpg_file_name = cur_uuid + ".jpg"
   html_file_name = cur_uuid + ".html"
@@ -76,38 +84,39 @@ def send_async_response(code, space_name):
   lexer = guess_lexer(code)
   jpg_result = highlight(code, lexer, jpg_formatter)
   html_result = highlight(code, lexer, html_formatter)
-  spaces_list = chat.spaces().list().execute()
   open(img_file_path, 'wb').write(jpg_result)
   with open(html_file_path, "w") as f:
     f.write(html_result)
-  chat.spaces().messages().create(
-      parent=spaces_list['spaces'][1]['name'],
-      body={
-        "cards": [
+  return html_url, img_url, lexer
+
+
+def build_card(html_url, img_url, lexer):
+  return {
+    "cards": [
+      {
+        "header": {
+          "title": "enkidu has some " + lexer.name.lower() + " for you",
+          "imageUrl": "https://www.gstatic.com/images/icons/material/system/1x/face_black_24dp.png",
+        },
+        "sections": [
           {
-            "header": {
-              "title": "enkidu has some " + lexer.name.lower() + " for you",
-              "imageUrl": "https://www.gstatic.com/images/icons/material/system/1x/face_black_24dp.png",
-            },
-            "sections": [
+            "widgets": [
               {
-                "widgets": [
-                  {
-                    "image": {
-                      "imageUrl": img_url,
-                      "onClick": {
-                        "openLink": {
-                          "url": html_url
-                        }
-                      }
+                "image": {
+                  "imageUrl": img_url,
+                  "onClick": {
+                    "openLink": {
+                      "url": html_url
                     }
                   }
-                ]
+                }
               }
             ]
           }
         ]
-      }).execute()
+      }
+    ]
+  }
 
 
 # [END async-response]

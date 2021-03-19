@@ -106,8 +106,8 @@ def generate_targets(code):
   html_file_path = html_store + "/" + html_file_name
   img_url = enkidu_url + '/img/' + jpg_file_name
   html_url = enkidu_url + '/html/' + html_file_name
-  jpg_formatter = JpgImageFormatter(style=get_style_by_name('solarized-light'))
-  html_formatter = HtmlFormatter(style=get_style_by_name('solarized-light'))
+  jpg_formatter = JpgImageFormatter(style=get_style_by_name('native'))
+  html_formatter = HtmlFormatter(style=get_style_by_name('native'))
   html_formatter.noclasses = True
   html_formatter.linenos = True
   lexer = guess_lexer(code.encode())

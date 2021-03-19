@@ -76,7 +76,7 @@ def send_async_response(code, space_name):
   html_result = highlight(code, lexer, html_formatter)
   spaces_list = chat.spaces().list().execute()
   open(img_file_path, 'wb').write(jpg_result)
-  open(html_result, 'wb').write(html_result)
+  open(html_file_path, 'wb').write(html_result)
   chat.spaces().messages().create(
       parent=spaces_list['spaces'][1]['name'],
       body={
@@ -94,7 +94,7 @@ def send_async_response(code, space_name):
                       "imageUrl": img_url,
                       "onClick": {
                         "openLink": {
-                          "url": img_url
+                          "url": html_url
                         }
                       }
                     }

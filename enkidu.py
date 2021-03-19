@@ -59,7 +59,7 @@ def home_post():
 
 
 def send_async_response(code):
-  html_url, img_url, lexer, spaces_list = generate_targets(code)
+  html_url, img_url, lexer = generate_targets(code)
   spaces_list = chat.spaces().list().execute()
   chat.spaces().messages().create(
       parent=spaces_list['spaces'][0]['name'],
@@ -116,9 +116,7 @@ def build_card(html_url, img_url, lexer):
   }
 
 
-
 def format_response(event):
-
   event_type = event['type']
 
   text = ""
@@ -141,7 +139,6 @@ def format_response(event):
     response['thread'] = thread_id
 
   return response
-
 
 
 if __name__ == '__main__':

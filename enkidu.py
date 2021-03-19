@@ -42,7 +42,7 @@ def html(filename):
 @app.route('/', methods=['POST'])
 def home_post():
   event_data = request.get_json()
-
+  logging.info("received event['%s']".format(event_data))
   resp = None
   if event_data['type'] == 'REMOVED_FROM_SPACE':
     logging.info('Bot removed from  %s', event_data['space']['name'])

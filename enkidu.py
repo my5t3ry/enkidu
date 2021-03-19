@@ -94,7 +94,7 @@ def home_get():
   App Engine instance.
   """
 
-  return render_template('home.html')
+  return '<html><body>foo</body></html>'
 
 
 if __name__ == '__main__':

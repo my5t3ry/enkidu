@@ -49,9 +49,9 @@ def home_post():
 # [START async-response]
 
 def send_async_response(response, space_name):
-  uuid = uuid.uuid4().hex
+  cur_uuid = uuid.uuid4().hex
 
-  file_name = uuid + ".gif"
+  file_name = cur_uuid + ".gif"
   tmp_file_name = + file_name
 
   pyg = subprocess.check_output(

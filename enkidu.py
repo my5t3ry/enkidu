@@ -3,7 +3,7 @@ import os
 import uuid
 from sys import path
 
-from flask import Flask, request, json, send_file
+from flask import Flask, request, json, send_file, send_from_directory, abort
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from pygments import highlight
@@ -23,11 +23,13 @@ tmp_dode = '/root/tmp/tmp.code'
 enkidu_url = 'https://enkidu.dgm-it.de'
 
 
-@app.route('/img/<path:path>')
-@app.route('/img/<path:path>', defaults={'path': ''})
-def get_image():
-  complete_path = os.path.join(img_store, path)
-  return send_file(complete_path, mimetype='image/jpeg')
+@app.route('/img/<path:filename>')
+def image(filename):
+  try:
+    return send_from_directory('/root/img/', filename)
+  except IOError:
+    abort(404)
+
 
 
 @app.route('/', methods=['POST'])

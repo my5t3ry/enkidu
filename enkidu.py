@@ -1,3 +1,5 @@
+#!/usr/bin/python3 -u
+
 import logging
 import uuid
 from flask import Flask, request, json, send_from_directory, abort

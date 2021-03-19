@@ -54,12 +54,13 @@ def home_post():
 
 def send_async_response(code, space_name):
   cur_uuid = uuid.uuid4().hex
-  file_name = img_store+"/"+ cur_uuid + ".jpg"
+  file_name = img_store + "/" + cur_uuid + ".jpg"
+  file_path = img_store + "/" + file_name
   img_url = enkidu_url + '/img/' + file_name
   formatter = JpgImageFormatter()
   result = highlight(code, guess_lexer(code), formatter)
   spaces_list = chat.spaces().list().execute()
-  open(file_name, 'wb').write(result)
+  open(file_path, 'wb').write(result)
   chat.spaces().messages().create(
       parent=spaces_list['spaces'][0]['name'],
       body={

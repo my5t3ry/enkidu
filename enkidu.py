@@ -1,5 +1,7 @@
 import logging
+import os
 import subprocess
+from sys import path
 
 from flask import Flask, request, json, send_file
 from google.oauth2 import service_account
@@ -13,30 +15,22 @@ credentials = service_account.Credentials.from_service_account_file(
     SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 chat = build('chat', 'v1', credentials=credentials)
 
+img_store = '/root/img/'
 
-@app.route('/img')
+
+@app.route('/img/<path:path>')
+@app.route('/img/<path:path>', defaults={'path': ''})
 def get_image():
-  if request.args.get('type') == '1':
-    filename = 'ok.gif'
-  else:
-    filename = 'error.gif'
-  return send_file(filename, mimetype='image/gif')
+  complete_path = os.path.join(img_store, path)
+  return send_file(complete_path, mimetype='image/jpeg')
 
 
 @app.route('/', methods=['POST'])
 def home_post():
-  """Respond to POST requests to this endpoint.
-  All requests sent to this endpoint from Hangouts Chat are POST
-  requests.
-  """
-
   event_data = request.get_json()
 
   resp = None
-  logging.info('Event received' +json.jsonify(event_data))
-
-  # If the bot is removed from the space, it doesn't post a message
-  # to the space. Instead, log a message showing that the bot was removed.
+  logging.info('Event received' + json.jsonify(event_data))
   if event_data['type'] == 'REMOVED_FROM_SPACE':
     logging.info('Bot removed from  %s', event_data['space']['name'])
     return json.jsonify({})
@@ -57,7 +51,7 @@ def send_async_response(response, space_name):
   uuid = uuid.uuid4().hex
 
   file_name = uuid + ".gif"
-  tmp_file_name = '/root/img/' + file_name
+  tmp_file_name = + file_name
 
   pyg = subprocess.check_output(
       "pygmentize -f gif -l python -o " + tmp_file_name + " enkidu.py",

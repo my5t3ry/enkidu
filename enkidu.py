@@ -52,7 +52,7 @@ def home_post():
     code = event_data['message']['text']
     resp = format_response(event_data)
     space_name = event_data['space']['name']
-    send_async_response(code, space_name)
+    send_async_response(code)
 
   # Return empty jsom respomse simce message already sent via REST API
   return json.jsonify({})

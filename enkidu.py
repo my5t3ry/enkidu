@@ -81,7 +81,7 @@ def home_post():
 def send_async_response(code):
   html_url, img_url, lexer = generate_targets(code)
   spaces_list = chat.spaces().list().execute()
-  logging.info("Current bot spaces ['%s']", json.jsonify(spaces_list))
+  logging.info("Current bot spaces ['%s']", json.jsonify(spaces_list['spaces']))
   chat.spaces().messages().create(
       parent=spaces_list['spaces'][0]['name'],
       body=build_card(html_url, img_url, lexer)).execute()

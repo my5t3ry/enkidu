@@ -66,7 +66,8 @@ def resolve_target(event_data, cur_task, cur_spaces_ctx):
     return event_data['space']['name']
   else:
     for cur_space in cur_spaces_ctx:
-      if cur_task.target_display_name in cur_space['displayName']:
+      if cur_task.target_display_name.lower() in cur_space[
+        'displayName'].lower():
         return cur_space['name']
 
 
@@ -78,7 +79,9 @@ def home_post():
   cur_task = build_task(event_data)
   logging.info("received event ['%s']", event_data)
   target_space = resolve_target(event_data, cur_task, cur_spaces_ctx)
+  logging.info("Resolved target space ['%s']", target_space)
   card = build_targets(cur_task)
+
   chat.spaces().messages().create(
       parent=target_space,
       body=card).execute()

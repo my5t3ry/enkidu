@@ -63,7 +63,7 @@ def send_async_response(code, space_name):
   spaces_list = chat.spaces().list().execute()
   open(file_path, 'wb').write(result)
   chat.spaces().messages().create(
-      parent=spaces_list['spaces'][0]['name'],
+      parent=spaces_list['spaces'][1]['name'],
       body={
         "cards": [
           {

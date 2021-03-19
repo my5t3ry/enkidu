@@ -20,7 +20,7 @@ chat = build('chat', 'v1', credentials=credentials)
 
 img_store = '/root/img/'
 tmp_dode = '/root/tmp/tmp.code'
-enkidu_url = 'https://enkidu.dgm-it.de/'
+enkidu_url = 'https://enkidu.dgm-it.de'
 
 
 @app.route('/img/<path:path>')
@@ -54,9 +54,8 @@ def home_post():
 
 def send_async_response(code, space_name):
   cur_uuid = uuid.uuid4().hex
-  file_name = cur_uuid + ".jpg"
+  file_name = img_store+"/"+ cur_uuid + ".jpg"
   img_url = enkidu_url + '/img/' + file_name
-  tmp_file_name = img_store + file_name
   formatter = JpgImageFormatter()
   result = highlight(code, guess_lexer(code), formatter)
   spaces_list = chat.spaces().list().execute()
@@ -76,7 +75,7 @@ def send_async_response(code, space_name):
                 "widgets": [
                   {
                     "image": {
-                      "imageUrl": "test",
+                      "imageUrl": img_url,
                       "onClick": {
                         "openLink": {
                           "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"

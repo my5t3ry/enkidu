@@ -4,6 +4,7 @@ import uuid
 from flask import Flask, request, json, send_from_directory, abort
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+from pandas.io.formats.html import HTMLFormatter
 from pygments import highlight
 from pygments.formatters.img import JpgImageFormatter
 from pygments.lexers import guess_lexer
@@ -17,6 +18,7 @@ credentials = service_account.Credentials.from_service_account_file(
 chat = build('chat', 'v1', credentials=credentials)
 
 img_store = '/root/img/'
+html_store = '/root/html/'
 tmp_dode = '/root/tmp/tmp.code'
 enkidu_url = 'https://enkidu.dgm-it.de'
 
@@ -25,6 +27,14 @@ enkidu_url = 'https://enkidu.dgm-it.de'
 def image(filename):
   try:
     return send_from_directory('/root/img/', filename)
+  except IOError:
+    abort(404)
+
+
+@app.route('/html/<path:filename>')
+def html(filename):
+  try:
+    return send_from_directory('/root/html/', filename)
   except IOError:
     abort(404)
 
@@ -54,14 +64,19 @@ def home_post():
 def send_async_response(code, space_name):
   cur_uuid = uuid.uuid4().hex
   file_name = cur_uuid + ".jpg"
-  file_path = img_store + "/" + file_name
+  img_file_path = img_store + "/" + file_name
+  html_file_path = html_store + "/" + file_name
   img_url = enkidu_url + '/img/' + file_name
-  formatter = JpgImageFormatter()
+  html_url = enkidu_url + '/html/' + file_name
+  jpg_formatter = JpgImageFormatter()
+  html_formatter = HTMLFormatter()
+
   lexer = guess_lexer(code)
-  lexer.name
-  result = highlight(code, lexer, formatter)
+  jpg_result = highlight(code, lexer, jpg_formatter)
+  html_result = highlight(code, lexer, html_formatter)
   spaces_list = chat.spaces().list().execute()
-  open(file_path, 'wb').write(result)
+  open(img_file_path, 'wb').write(jpg_result)
+  open(html_result, 'wb').write(html_result)
   chat.spaces().messages().create(
       parent=spaces_list['spaces'][1]['name'],
       body={
@@ -70,7 +85,6 @@ def send_async_response(code, space_name):
             "header": {
               "title": "enkidu has some " + lexer.name.lower() + " for you",
               "imageUrl": "https://www.gstatic.com/images/icons/material/system/1x/face_black_24dp.png",
-
             },
             "sections": [
               {

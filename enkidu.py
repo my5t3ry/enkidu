@@ -2,6 +2,8 @@
 
 import logging
 import uuid
+from logging.config import dictConfig
+
 from flask import Flask, request, json, send_from_directory, abort
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -9,10 +11,6 @@ from pygments import highlight
 from pygments.formatters.html import HtmlFormatter
 from pygments.formatters.img import JpgImageFormatter
 from pygments.lexers import guess_lexer
-
-
-
-from logging.config import dictConfig
 
 dictConfig({
   'version': 1,
@@ -29,8 +27,6 @@ dictConfig({
     'handlers': ['wsgi']
   }
 })
-
-
 
 app = Flask(__name__)
 
@@ -66,7 +62,7 @@ def html(filename):
 @app.route('/', methods=['POST'])
 def home_post():
   event_data = request.get_json()
-  logging.info("received event ['{}']".format(event_data))
+  logging.info("received event ['%s']", event_data)
   if event_data['type'] == 'REMOVED_FROM_SPACE':
     logging.info('Bot removed from  %s', event_data['space']['name'])
     return json.jsonify({})
@@ -85,6 +81,7 @@ def home_post():
 def send_async_response(code):
   html_url, img_url, lexer = generate_targets(code)
   spaces_list = chat.spaces().list().execute()
+  logging.info("Current bot spaces ['%s']", json.jsonify(spaces_list))
   chat.spaces().messages().create(
       parent=spaces_list['spaces'][0]['name'],
       body=build_card(html_url, img_url, lexer)).execute()

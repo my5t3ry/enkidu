@@ -95,7 +95,7 @@ def generate_moc():
 
 def build_targets(cur_task):
   html_url, img_url, lexer = generate_targets(cur_task.code)
-  return generate_card(html_url, img_url, lexer)
+  return generate_card(html_url, img_url)
 
 
 def generate_targets(code):
@@ -119,14 +119,10 @@ def generate_targets(code):
   return html_url, img_url, lexer
 
 
-def generate_card(html_url, img_url, lexer):
+def generate_card(html_url, img_url):
   return {
     "cards": [
       {
-        "header": {
-          "title": "enkidu has some " + lexer.name.lower() + " for you",
-          "imageUrl": "https://www.gstatic.com/images/icons/material/system/1x/face_black_24dp.png",
-        },
         "sections": [
           {
             "widgets": [

@@ -1,6 +1,8 @@
 from model.PrivateHighlightTask import PrivateHighlightTask
 from model.PublicHighlightTask import PublicHighlightTask
 
+slash_commands = ['/me ', '/public ']
+
 
 def build_task(event):
   if "slashCommand" in event['message']:
@@ -10,10 +12,11 @@ def build_task(event):
         strip_slash_command(event))
   else:
     return PrivateHighlightTask(
-        event['message']['text'])
+        strip_slash_command(event))
 
 
 def strip_slash_command(event):
-  return event['message']['text'].replace(
-      event['message']['annotations'][0]['slashCommand'][
-        'commandName'] + ' ', '')
+  result = event['message']['text']
+  for cur_slash_command in slash_commands:
+    result = result.replace(cur_slash_command, '')
+  return result

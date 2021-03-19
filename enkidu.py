@@ -63,7 +63,33 @@ def send_async_response(code, space_name):
   open(file_name, 'wb').write(result)
   chat.spaces().messages().create(
       parent=spaces_list['spaces'][0]['name'],
-      body={'text': "ssssssss"}).execute()
+      body={
+        "cards": [
+          {
+            "header": {
+              "title": "ChatBot",
+              "imageUrl": "https://www.gstatic.com/images/icons/material/system/1x/face_black_24dp.png",
+
+            },
+            "sections": [
+              {
+                "widgets": [
+                  {
+                    "image": {
+                      "imageUrl": "test",
+                      "onClick": {
+                        "openLink": {
+                          "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }).execute()
 
 
 # [END async-response]

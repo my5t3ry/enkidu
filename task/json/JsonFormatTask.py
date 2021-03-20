@@ -15,4 +15,4 @@ class JsonFormatTask(PrivatTask):
 
   def get_message(self):
     return {
-      "text": "```\n" + ppjson(self.payload) + "\n```"}
+      "text": "```\n" + self.payload+ "\n```"}

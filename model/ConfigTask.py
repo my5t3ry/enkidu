@@ -16,7 +16,7 @@ class ConfigTask(PrivatTask):
   def get_data(self):
     print(f'{self.real}+{self.imag}j')
 
-  def gete_message(self):
+  def get_message(self):
     return {
       "cards": [
         {

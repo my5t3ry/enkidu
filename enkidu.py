@@ -2,12 +2,11 @@
 import logging
 from logging.config import dictConfig
 
+from components.constant_service.ConsstantsService import ConstantsService
+from components.settings_repository.SettingsRepository import SettingsRepository
 from flask import Flask, request, json, send_from_directory, abort
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
-
-from components.constant_service.ConsstantsService import ConstantsService
-from components.settings_repository.SettingsRepository import SettingsRepository
 from task.TaskBuilder import TaskBuilder
 
 settings_repository = SettingsRepository()
@@ -60,7 +59,7 @@ def home_post():
   # logging.debug("current event ['%s']", json.dumps(cur_task))
   cur_task.run()
   try:
-    message = cur_task.get_message
+    message = cur_task.get_message()
   except Exception as e:
     message = {"text": "```\n" + "Command failed -> [{}]".format(e) + "\n```"}
 

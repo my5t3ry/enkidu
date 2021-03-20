@@ -70,10 +70,11 @@ def home_post():
   # logging.debug("current event ['%s']", json.dumps(cur_task))
   cur_task.run()
 
-  chat.spaces().messages().create(
-      parent=cur_task.get_target_space_name(),
-      thread_id="code-snippets",
-      body=cur_task.get_message()).execute()
+  result = chat.spaces().messages().create(
+    parent=cur_task.get_target_space_name(),
+    body=cur_task.get_message()).execute()
+
+
 
   return json.jsonify({})
 

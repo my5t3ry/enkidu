@@ -12,7 +12,7 @@ class ConstantsService:
     "scopes": ['https://www.googleapis.com/auth/chat.bot'],
     "default_settings_path": os.path.join(expanduser("~"),
                                           '.enkidu/defaultsettings.json'),
-    "credentials": '/home/my5t3ry/codeBase/python/enkidu/cred.json',
+    "credentials": 'cred.json',
   }
 
   @staticmethod

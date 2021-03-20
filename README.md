@@ -5,9 +5,9 @@
 generates highlighted jpg/html source from private messages. will reply as DM or group.
 example:
 
-html output -> [https://enkidu.dgm-it.de/html/ba4a896f439446c98d727bf7267df237.html](https://enkidu.dgm-it.de/html/ba4a896f439446c98d727bf7267df237.html)
+html output -> [https://enkidu.dgm-it.de/html/351ef14bc57345d0bc6fc4251b1055ad.html](https://enkidu.dgm-it.de/html/351ef14bc57345d0bc6fc4251b1055ad.html)
 
-jpeg output -> [https://enkidu.dgm-it.de/img/ba4a896f439446c98d727bf7267df237.jpg](https://enkidu.dgm-it.de/img/ba4a896f439446c98d727bf7267df237.jpg)
+jpeg output -> [https://enkidu.dgm-it.de/img/351ef14bc57345d0bc6fc4251b1055ad.jpg](https://enkidu.dgm-it.de/img/351ef14bc57345d0bc6fc4251b1055ad.jpg)
 
 ![response example](http://data.shitkatapult.org/enkidu_themed3.png)
 

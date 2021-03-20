@@ -37,7 +37,7 @@ class AbstractCodeSnippetTask(Task):
       formatter.linenos = True
       lexer = guess_lexer(self.payload.encode())
       result = highlight(self.payload, lexer, formatter)
-      open(file_name, 'wb').write(
+      open(file_path, 'wb').write(
           str.encode(result) if type(result) is str else result)
       self.urls.append(file_url)
 

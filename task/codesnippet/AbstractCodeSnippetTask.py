@@ -59,6 +59,9 @@ class AbstractCodeSnippetTask(Task):
                         "url": self.html_url
                       }
                     }
+                  },
+                  "textParagraph": {
+                    "text": self.html_url + "\n" + self.img_url
                   }
                 }
               ]

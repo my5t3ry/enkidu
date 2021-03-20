@@ -24,7 +24,7 @@ class ConfigTask(PrivatTask):
             {
               "widgets": [
                 {
-                  "text": json.dump(self.user_config)
+                  "text": json.dumps(self.user_config)
                 }
               ]
             }

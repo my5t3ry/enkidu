@@ -8,12 +8,10 @@ task_registry = {'/me': PrivateHighlightTask,
                  '/public': PublicHighlightTask,
                  '/config': ConfigTask,
                  }
-
 p = re.compile('([^\s]+)')
 
 
 class TaskBuilder:
-
   @staticmethod
   def build_task(event):
     match = p.search(event['message']['text'])[0]

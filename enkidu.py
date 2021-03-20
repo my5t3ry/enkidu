@@ -59,14 +59,15 @@ def html(filename):
 @app.route('/', methods=['POST'])
 def home_post():
   event_data = request.get_json()
+  logging.debug("current event ['%s']", json.dumps(event_data))
+
   cur_spaces_ctx = chat.spaces().list().execute()['spaces']
   event_data['spaces_ctx'] = cur_spaces_ctx
   event_data['user_config'] = settings_repository.get_settings(
       event_data['user']['name'])
-
   logging.info("Current bot spaces ['%s']", json.dumps(cur_spaces_ctx))
   cur_task = TaskBuilder.build_task(event_data)
-  # logging.debug("processing task ['%s']", json.dumps(cur_task))
+  # logging.debug("current event ['%s']", json.dumps(cur_task))
   cur_task.run()
 
   chat.spaces().messages().create(

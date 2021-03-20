@@ -1,64 +1,64 @@
 {
-  "type": "MESSAGE",
-  "eventTime": "2021-03-19T17:22:55.147567Z",
+  "configCompleteRedirectUrl": "https://chat.google.com/api/bot_config_complete?token=AAJCfVVibwIOJx61eBJR0GlqciY89UyU2mR8gAJc2IIUDMQFFyJzKQYlTIjYBEl8QurpMYXOooMzgHmLIjuwq1e8mkR0C_ce1sio-0csQZ6_-ipUg7lF4d0MGilVVcxLxPqxaU_5uL6LZGUONBbB9QA%3D",
+  "eventTime": "2021-03-20T00:38:01.673823Z",
   "message": {
-    "name": "spaces/sVBZ8wAAAAE/messages/aAPNipgrXw0.aAPNipgrXw0",
-    "sender": {
-      "name": "users/115408569395812721682",
-      "displayName": "Sascha Bast",
-      "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
-      "email": "sascha.bast@dgm-kommunikation.de",
-      "type": "HUMAN",
-      "domainId": "3f8yvml"
-    },
-    "createTime": "2021-03-19T17:22:55.147567Z",
-    "text": "/public Entwicklung def init():\n  global words\n  global probs\n  global word_freq_dict\n  global Total\n  words_str = subprocess.check_output(\n      \"echo \\\"$(cat /home/my5t3ry/.zsh_history)\\\"\", shell=True)",
     "annotations": [
       {
-        "type": "SLASH_COMMAND",
-        "startIndex": 0,
         "length": 7,
         "slashCommand": {
           "bot": {
-            "name": "users/116251110050550395837",
-            "displayName": "enkidu",
             "avatarUrl": "https://lh3.googleusercontent.com/proxy/RUpiisY640Xp9Upw0LJSuxoqMQCfyA7YGMptfzj0r52zphR2EPTh8fzxL_FmuG-Cn2NtgNCo2wwFf7hOBs_Yjtn2T1TAPZZzYaE5rDCV1DYNCXjxzQ",
+            "displayName": "enkidu",
+            "name": "users/116251110050550395837",
             "type": "BOT"
           },
-          "type": "INVOKE",
+          "commandId": "2",
           "commandName": "/public",
-          "commandId": "2"
-        }
+          "type": "INVOKE"
+        },
+        "startIndex": 0,
+        "type": "SLASH_COMMAND"
       }
     ],
-    "thread": {
-      "name": "spaces/sVBZ8wAAAAE/threads/aAPNipgrXw0",
-      "retentionSettings": {
-        "state": "PERMANENT"
-      }
+    "argumentText": " arcee @app.route('/html/<path:filename>')\ndef html(filename):\n  global constants_service\n  try:\n    return send_from_directory(ConstantsService.get_value('html_store'),\n                               filename)\n  except IOError:\n    abort(404)",
+    "createTime": "2021-03-20T00:38:01.673823Z",
+    "name": "spaces/sVBZ8wAAAAE/messages/WJiFMRsdk8E.WJiFMRsdk8E",
+    "sender": {
+      "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
+      "displayName": "Sascha Bast",
+      "domainId": "3f8yvml",
+      "email": "sascha.bast@dgm-kommunikation.de",
+      "name": "users/115408569395812721682",
+      "type": "HUMAN"
+    },
+    "slashCommand": {
+      "commandId": "2"
     },
     "space": {
       "name": "spaces/sVBZ8wAAAAE",
-      "type": "DM",
-      "singleUserBotDm": true
+      "singleUserBotDm": true,
+      "type": "DM"
     },
-    "argumentText": ":Entwicklung def init():\n  global words\n  global probs\n  global word_freq_dict\n  global Total\n  words_str = subprocess.check_output(\n      \"echo \\\"$(cat /home/my5t3ry/.zsh_history)\\\"\", shell=True)",
-    "slashCommand": {
-      "commandId": "2"
+    "text": "/public arcee @app.route('/html/<path:filename>')\ndef html(filename):\n  global constants_service\n  try:\n    return send_from_directory(ConstantsService.get_value('html_store'),\n                               filename)\n  except IOError:\n    abort(404)",
+    "thread": {
+      "name": "spaces/sVBZ8wAAAAE/threads/WJiFMRsdk8E",
+      "retentionSettings": {
+        "state": "PERMANENT"
+      }
     }
-  },
-  "user": {
-    "name": "users/115408569395812721682",
-    "displayName": "Sascha Bast",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
-    "email": "sascha.bast@dgm-kommunikation.de",
-    "type": "HUMAN",
-    "domainId": "3f8yvml"
   },
   "space": {
     "name": "spaces/sVBZ8wAAAAE",
-    "type": "DM",
-    "singleUserBotDm": true
+    "singleUserBotDm": true,
+    "type": "DM"
   },
-  "configCompleteRedirectUrl": "https://chat.google.com/api/bot_config_complete?token=AAJCfVUnTTE4PA32gFJ1iN6hlVFpwRughX8BdZ-iTxhLbOU_wXHfw426c2Jfg7a0dpegvpckLSwRgVoFGf13xVLA_vXMQw10necRGTgPDUx7KWN4zOjE12fDhMHKBn99jHWJ3_TYOsv-WaJAFfpgyDk%3D"
+  "type": "MESSAGE",
+  "user": {
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
+    "displayName": "Sascha Bast",
+    "domainId": "3f8yvml",
+    "email": "sascha.bast@dgm-kommunikation.de",
+    "name": "users/115408569395812721682",
+    "type": "HUMAN"
+  }
 }

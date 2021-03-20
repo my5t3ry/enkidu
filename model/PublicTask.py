@@ -7,9 +7,8 @@ class PublicTask(Task):
 
   def __init__(self, event):
     p = re.compile('([^\s]+)')
-    match = p.search(super.code)
+    match = p.search(event['message']['text'])
     target_display_name = match.groups()[0]
-    self.code = super.code.replace(self.target_display_name + ' ', '')
     super(PublicTask, self).__init__(event, self.find_target_space_name(
         target_display_name, event['spaces_ctx']))
 

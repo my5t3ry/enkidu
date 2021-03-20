@@ -13,14 +13,18 @@ class JsonValidateTask(PrivatTask):
 
   def run(self):
     instance = [{}, 3, "foo"]
-    v = Draft7Validator(json.loads(self.payload))
-    errors = sorted(v.iter_errors(instance), key=lambda e: e.path)
-    for error in errors:
-      for suberror in sorted(error.context, key=lambda e: e.schema_path):
-        self.validation_result = self.validation_result + \
-                                 str(suberror.schema_path[0]) + ':' + \
-                                 str(suberror.schema_path[
-                                       1]) + ' -> ' + suberror.message + '\n'
+    try:
+      v = Draft7Validator(json.loads(self.payload))
+      errors = sorted(v.iter_errors(instance), key=lambda e: e.path)
+      for error in errors:
+        for suberror in sorted(error.context, key=lambda e: e.schema_path):
+          self.validation_result = self.validation_result + \
+                                   str(suberror.schema_path[0]) + ':' + \
+                                   str(suberror.schema_path[
+                                         1]) + ' -> ' + suberror.message + '\n'
+    except Exception as e:
+      self.validation_result = "could not parse json [{}] exception [{}]".format(
+          self.payload, e)
 
   def get_data(self):
     print(f'{self.real}+{self.imag}j')

@@ -10,7 +10,7 @@ class PublicTask(Task):
     match = p.search(event['message']['text'])
     target_display_name = match.groups()[0]
     event['message']['text'] = event['message']['text'].replace(
-        event['message']['text'] + ' ', "")
+        ' ' + target_display_name + ' ', "")
     super(PublicTask, self).__init__(event, self.find_target_space_name(
         target_display_name, event['spaces_ctx']))
 

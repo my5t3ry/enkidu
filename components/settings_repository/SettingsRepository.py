@@ -26,3 +26,7 @@ class SettingsRepository:
       default_settings_json = json_file.read()
       db[user_name] = default_settings_json
       return default_settings_json
+
+
+
+

@@ -40,7 +40,7 @@ chat = build('chat', 'v1', credentials=credentials)
 def dist(filename):
   global constants_service
   try:
-    return send_from_directory(ConstantsService.get_value('img_store'),
+    return send_from_directory(ConstantsService.get_value('dist_store'),
                                filename)
   except IOError:
     abort(404)

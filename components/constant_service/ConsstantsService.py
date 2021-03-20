@@ -6,7 +6,6 @@ class ConstantsService:
   const = {
     "home": expanduser("~"),
     "dist_store": os.path.join(expanduser("~"), '.enkidu/assets/dist'),
-    "html_store": os.path.join(expanduser("~"), '.enkidu/assets/html'),
     "enkidu_url": 'https://enkidu.dgm-it.de',
     "db_path": os.path.join(expanduser("~"), '.enkidu/db'),
     "help_file": os.path.join(expanduser("~"), '.enkidu/help.txt'),

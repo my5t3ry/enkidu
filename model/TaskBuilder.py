@@ -11,7 +11,7 @@ task_registry = {'/me': {'default': PrivateHighlightTask},
                  '/public': {'default': PublicHighlightTask},
                  '/str': str_registry,
                  '/json': json_registry,
-                 '/aret':  arithmetic_registry,
+                 '/arit': arithmetic_registry,
                  '/config': config_registry,
                  'default': PrivateHighlightTask,
                  }

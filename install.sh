@@ -14,7 +14,6 @@ pip3 install \
   flask \
   uuid
 
-mkdir -p ~/.enkidu/assets/img
-mkdir -p ~/.enkidu/assets/html
+mkdir -p ~/.enkidu/assets/dist
 cp etc/defaultsettings.json ~/.enkidu/
 cp etc/help.txt ~/.enkidu/

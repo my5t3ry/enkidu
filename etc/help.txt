@@ -10,13 +10,18 @@ commands:
 /help                   this
 /cs    {src}            codesnippets private
 /cs -p {name} {src}     codesnippets to group
+
 /config                 shows user config
 /config -e {cfg_json}   edits config
+/config --list-styles   list available codesnippet styles
+/config --list-formats  list available codesnippet styles
+
 /str -tl   {str}        string to lower
 /str -tu   {str}        string to upper
 /str -url  {str}        url encode string
 /str -rnd  {str}        random string[16]
+
 /json -v   {json}       validaton\linter
 /json -f   {json}       pretty print json
-/arit {str}             evaluates arimethric
+/arit {str}             evaluates arithmetic
 

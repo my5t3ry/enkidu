@@ -5,7 +5,7 @@ from os.path import expanduser
 class ConstantsService:
   const = {
     "home": expanduser("~"),
-    "img_store": os.path.join(expanduser("~"), '.enkidu/assets/img'),
+    "dist_store": os.path.join(expanduser("~"), '.enkidu/assets/dist'),
     "html_store": os.path.join(expanduser("~"), '.enkidu/assets/html'),
     "enkidu_url": 'https://enkidu.dgm-it.de',
     "db_path": os.path.join(expanduser("~"), '.enkidu/db'),

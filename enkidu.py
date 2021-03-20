@@ -36,21 +36,11 @@ credentials = service_account.Credentials.from_service_account_file(
 chat = build('chat', 'v1', credentials=credentials)
 
 
-@app.route('/img/<path:filename>')
-def image(filename):
+@app.route('/dist/<path:filename>')
+def dist(filename):
   global constants_service
   try:
     return send_from_directory(ConstantsService.get_value('img_store'),
-                               filename)
-  except IOError:
-    abort(404)
-
-
-@app.route('/html/<path:filename>')
-def html(filename):
-  global constants_service
-  try:
-    return send_from_directory(ConstantsService.get_value('html_store'),
                                filename)
   except IOError:
     abort(404)

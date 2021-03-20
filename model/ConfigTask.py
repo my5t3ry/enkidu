@@ -18,17 +18,4 @@ class ConfigTask(PrivatTask):
 
   def get_message(self):
     return {
-      "cards": [
-        {
-          "sections": [
-            {
-              "widgets": [
-                {
-                  "text": json.dumps(self.user_config)
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
+      "text": json.dumps(self.user_config)}

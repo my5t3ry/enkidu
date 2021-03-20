@@ -18,7 +18,7 @@
       "singleUserBotDm": true,
       "type": "DM"
     },
-    "text": "/json -v asddas",
+    "text": "/json -v {\n  \"theme\": \"native\",\n  \"image-fontsize\": \"18\"}",
     "thread": {
       "name": "spaces/sVBZ8wAAAAE/threads/1RKCICeswk4",
       "retentionSettings": {

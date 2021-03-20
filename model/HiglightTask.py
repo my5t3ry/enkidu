@@ -13,8 +13,8 @@ class HighlightTask(Task):
   html_url = None
   img_url = None
 
-  def __init__(self, event):
-    super(HighlightTask, self).__init__(event)
+  def __init__(self, event, payload):
+    super(HighlightTask, self).__init__(payload)
     self.user_config = event['user_config']
 
   def run(self):
@@ -36,9 +36,9 @@ class HighlightTask(Task):
         style=get_style_by_name(self.user_config['theme']))
     html_formatter.noclasses = True
     html_formatter.linenos = True
-    lexer = guess_lexer(self.code.encode())
-    jpg_result = highlight(self.code, lexer, image_formater)
-    html_result = highlight(self.code, lexer, html_formatter)
+    lexer = guess_lexer(self.payload.encode())
+    jpg_result = highlight(self.payload, lexer, image_formater)
+    html_result = highlight(self.payload, lexer, html_formatter)
     open(img_file_path, 'wb').write(jpg_result)
     with open(html_file_path, "w") as f:
       f.write(html_result)

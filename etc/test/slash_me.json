@@ -12,7 +12,7 @@
       "domainId": "3f8yvml"
     },
     "createTime": "2021-03-19T18:58:27.235487Z",
-    "text": "/me @app.route('/html/<path:filename>')\ndef html(filename):\n  try:\n    return send_from_directory('/root/html/', filename)\n  except IOError:\n    abort(404)\n\n\ndef resolve_target(event_data, cur_task, cur_spaces_ctx):\n  if isinstance(cur_task, PrivateHighlightTask):\n    return event_data['space']['name']\n  else:\n    for cur_space in cur_spaces_ctx:\n      if cur_task.target_display_name.lower() in cur_space[\n        'displayName'].lower():\n        return cur_space['name']",
+    "text": "/config -e {\"theme\": \"native\", \"image-fontsize\": \"18\"}\n",
     "thread": {
       "name": "spaces/sVBZ8wAAAAE/threads/d40PxbBYjqU",
       "retentionSettings": {

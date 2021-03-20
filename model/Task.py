@@ -2,16 +2,16 @@ import uuid
 
 
 class Task(object):
-  code = None
-  user_name = None
+  payload = None
   uuid = None
   target_space_name = None
 
-  def __init__(self, event, target_space_name):
-    self.target_space_name = target_space_name
+  def __init__(self, payload):
     self.uuid = uuid.uuid4().hex
-    self.code = event['message']['text']
-    self.user_name = event['user']['name']
+    self.payload = payload
 
   def get_target_space_name(self):
     return self.target_space_name
+
+  def get_description(self):
+    return self.description

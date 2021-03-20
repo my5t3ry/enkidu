@@ -1,28 +1,43 @@
 import re
 
-from model.ConfigTask import ConfigTask
 from model.PrivateHighlightTask import PrivateHighlightTask
 from model.PublicHighlightTask import PublicHighlightTask
+from model.config.Config import config_registry
 
-task_registry = {'/me': PrivateHighlightTask,
-                 '/public': PublicHighlightTask,
-                 '/config': ConfigTask,
+task_registry = {'/me': {'default': PrivateHighlightTask},
+                 '/public': {'default': PublicHighlightTask},
+                 '/config': config_registry,
+                 'default': PrivateHighlightTask,
                  }
+
 p = re.compile('([^\s]+)')
 
 
 class TaskBuilder:
   @staticmethod
   def build_task(event):
-    match = p.search(event['message']['text'])[0]
-    event['message']['text'] = TaskBuilder.strip_slash_command(event)
-    return task_registry[match](
-        event) if match in task_registry else PrivateHighlightTask(
-        event)
+    return TaskBuilder.match_command(task_registry,
+                                     event, event['message']['text'])
 
   @staticmethod
-  def strip_slash_command(event):
-    result = event['message']['text']
-    for cur_slash_command in task_registry.keys():
-      result = result.replace(cur_slash_command, '')
+  def match_command(registry, event, cmd):
+    match = p.search(cmd)
+    if len(match.groups()) > 0 and match.groups()[0] in registry and type(
+        registry[match.groups()[0]]) is dict:
+      return TaskBuilder.match_command(registry[match.groups()[0]], event,
+                                       cmd.replace(match.groups()[0] + ' ', ""))
+    else:
+      return registry[match.groups()[0]](event,
+                                         TaskBuilder.strip_slash_command(
+                                           registry, cmd)
+                                         ) if match.groups()[0] in registry else \
+      registry["default"](event,
+                          TaskBuilder.strip_slash_command(registry, cmd)
+                          )
+
+  @staticmethod
+  def strip_slash_command(registry, cmd):
+    result = cmd
+    for cur_slash_command in registry.keys():
+      result = result.replace(cur_slash_command + ' ', '')
     return result

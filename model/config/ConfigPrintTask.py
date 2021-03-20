@@ -3,11 +3,11 @@ import json
 from model.PrivatTask import PrivatTask
 
 
-class ConfigTask(PrivatTask):
+class ConfigPrintTask(PrivatTask):
   user_config = None
 
-  def __init__(self, event):
-    super(ConfigTask, self).__init__(event)
+  def __init__(self, event, payload):
+    super(ConfigPrintTask, self).__init__(event, payload)
     self.user_config = event['user_config']
 
   def run(self):

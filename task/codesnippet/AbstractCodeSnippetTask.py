@@ -59,9 +59,16 @@ class AbstractCodeSnippetTask(Task):
                         "url": self.html_url
                       }
                     }
-                  },
+                  }
+                }
+              ]
+            },
+            {
+              "widgets": [
+                {
+
                   "textParagraph": {
-                    "text": self.html_url + "\n" + self.img_url
+                    "text": "<a href=" + self.html_url + ">" + self.html_url + "</a>\n<a href=" + self.img_url + ">" + self.img_url + "</a> "
                   }
                 }
               ]

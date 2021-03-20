@@ -1,4 +1,4 @@
-import uuid
+import hashlib
 
 
 class Task(object):
@@ -6,7 +6,8 @@ class Task(object):
   uuid = None
 
   def __init__(self, event, payload):
-    self.uuid = uuid.uuid4().hex
+    self.uuid =  hashlib.sha1(event['user']['name'].encode("UTF-8")).hexdigest()[:10]
+
     self.payload = payload
 
   def get_description(self):

@@ -39,7 +39,7 @@
       "singleUserBotDm": true,
       "type": "DM"
     },
-    "text": "/public arcee @app.route('/html/<path:filename>')\ndef html(filename):\n  global constants_service\n  try:\n    return send_from_directory(ConstantsService.get_value('html_store'),\n                               filename)\n  except IOError:\n    abort(404)",
+    "text": "/public arcee ",
     "thread": {
       "name": "spaces/sVBZ8wAAAAE/threads/WJiFMRsdk8E",
       "retentionSettings": {

@@ -9,6 +9,7 @@ pip3 install \
   google-api-python-client \
   simpleeval \
   jsbeautifier \
+  shortuuid \
   quote \
   flask \
   uuid
@@ -16,3 +17,4 @@ pip3 install \
 mkdir -p ~/.enkidu/assets/img
 mkdir -p ~/.enkidu/assets/html
 cp etc/defaultsettings.json ~/.enkidu/
+cp etc/help.txt ~/.enkidu/

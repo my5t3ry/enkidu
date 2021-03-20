@@ -6,4 +6,5 @@ str_registry = {
   '-tl': StrToLowerTask,
   '-tu': StrToUpperTask,
   '-url': StrUrlEncodeTask,
+  '-rnd': StrUrlEncodeTask,
 }

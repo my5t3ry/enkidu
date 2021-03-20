@@ -18,7 +18,7 @@
       "singleUserBotDm": true,
       "type": "DM"
     },
-    "text": "/cs import json\n\nfrom components.settings_repository.SettingsRepository import SettingsRepository\nfrom task.PrivatTask import PrivatTask\n\n\nclass ConfigEditTask(PrivatTask):\n  parseError = None\n  user_name = None\n  new_user_config = None\n\n  def __init__(self, event, payload):\n    super(ConfigEditTask, self).__init__(event, payload)\n    self.user_name = event['user']['name']\n\n    try:\n      self.new_user_config = json.loads(payload)\n    except Exception as e:\n      self.parseError = {\n        \"save failed\": \"could not parse json [{}] exception [{}]\".format(\n            payload, e)}\n\n  def run(self):\n    if self.parseError == None:\n      settings_reposiory = SettingsRepository()\n      settings_reposiory.set_settings(self.user_name, self.new_user_config)\n    pass\n\n  def get_data(self):\n    print(f'{self.real}+{self.imag}j')\n\n  def get_message(self):\n    response = {\n      \"save success\": self.new_user_config} if self.parseError == None else self.parseError\n    return {\n      \"text\": json.dumps(response)}",
+    "text": "/help",
     "thread": {
       "name": "spaces/sVBZ8wAAAAE/threads/1RKCICeswk4",
       "retentionSettings": {

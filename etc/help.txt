@@ -1,0 +1,22 @@
+            8    w    8
+.d88b 8d8b. 8.dP w .d88 8   8 
+8.dP' 8P Y8 88b  8 8  8 8b d8 
+`Y88P 8   8 8 Yb 8 `Y88 `Y8P8
+
+HOHOHOHOHOHOHOHOHOHOHOHOHOHOH
+
+commands:
+
+/help                   this
+/cs    {src}            codesnippets private
+/cs -p {name} {src}     codesnippets to group
+/config                 shows user config
+/config -e {cfg_json}   edits config
+/str -tl   {str}        string to lower
+/str -tu   {str}        string to upper
+/str -url  {str}        url encode string
+/str -rnd  {str}        random string[16]
+/json -v   {json}       validaton\linter
+/json -f   {json}       pretty print json
+/arit {str}             evaluates arimethric
+

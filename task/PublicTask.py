@@ -23,3 +23,6 @@ class PublicTask(Task):
       if target_display_name.lower() in cur_space[
         'displayName'].lower():
         return cur_space['name']
+
+  def get_target_space_name(self):
+    return self.target_space_name

@@ -1,3 +1,4 @@
+import jsbeautifier
 
 from task.PrivatTask import PrivatTask
 
@@ -13,5 +14,7 @@ class JsonFormatTask(PrivatTask):
     print(f'{self.real}+{self.imag}j')
 
   def get_message(self):
+    opts = jsbeautifier.default_options()
+    opts.indent_size = 2
     return {
-      "text": "```\n" + self.payload+ "\n```"}
+      "text": "```\n" + jsbeautifier.beautify(self.payload, opts)+ "\n```"}

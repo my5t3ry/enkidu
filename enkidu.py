@@ -69,10 +69,14 @@ def home_post():
   cur_task = TaskBuilder.build_task(event_data)
   # logging.debug("current event ['%s']", json.dumps(cur_task))
   cur_task.run()
+  try:
+    message = cur_task.get_message()
+  except Exception as e:
+    message = {"text": "```\n" + "Command failed -> [{}]".format(e) + "\n```"}
 
   result = chat.spaces().messages().create(
       parent=cur_task.get_target_space_name(),
-      body=cur_task.get_message()).execute()
+      body=message).execute()
 
   logging.info("message result ['%s']", json.dumps(result))
 

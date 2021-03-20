@@ -59,7 +59,7 @@ def html(filename):
 @app.route('/', methods=['POST'])
 def home_post():
   event_data = request.get_json()
-  logging.debug("current event ['%s']", json.dumps(event_data))
+  logging.info("current event ['%s']", json.dumps(event_data))
 
   cur_spaces_ctx = chat.spaces().list().execute()['spaces']
   event_data['spaces_ctx'] = cur_spaces_ctx

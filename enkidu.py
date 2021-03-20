@@ -60,7 +60,7 @@ def home_post():
   # logging.debug("current event ['%s']", json.dumps(cur_task))
   cur_task.run()
   try:
-    message = cur_task.get_message()
+    message = cur_task.get_message
   except Exception as e:
     message = {"text": "```\n" + "Command failed -> [{}]".format(e) + "\n```"}
 

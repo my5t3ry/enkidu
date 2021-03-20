@@ -1,5 +1,3 @@
-import json
-
 from pygments import highlight
 from pygments.formatters import get_formatter_for_filename
 from pygments.lexers import guess_lexer
@@ -30,6 +28,9 @@ class AbstractCodeSnippetTask(Task):
       file_url = ConstantsService.get_value(
           'enkidu_url') + '/dist/' + file_name
       formatter = get_formatter_for_filename(file_name)
+      if "jpg" in file_name or "gif" in file_name:
+        self.img_url = file_url
+
       formatter.style = get_style_by_name(self.user_config['theme'])
       formatter.font_size = self.user_config['image-fontsize']
       formatter.noclasses = True
@@ -40,15 +41,26 @@ class AbstractCodeSnippetTask(Task):
           str.encode(result) if type(result) is str else result)
       self.urls.append(file_url)
 
+  @property
   def get_message(self):
     links = ""
     for url in self.urls:
       links = links + "<a href=" + url + ">" + url + "</a>\n"
-    return {
-      "cards": [
+    link_widget = {
+      "widgets": [
         {
-          "sections": [
-            {
+          "textParagraph": {
+            "text": links
+          }
+        }
+      ]
+    }
+
+    if self.img_url != None:
+      return {
+        "cards": [
+          {
+            "sections": [{
               "widgets": [
                 {
                   "image": {
@@ -61,19 +73,19 @@ class AbstractCodeSnippetTask(Task):
                     }
                   }
                 }
-              ]
-            },
-            {
-              "widgets": [
-                {
-
-                  "textParagraph": {
-                    "text": json.dumps(links)
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
+              ]},
+              link_widget
+            ]
+          }
+        ]
+      }
+    else:
+      return {
+        "cards": [
+          {
+            "sections": [
+              links
+            ]
+          }
+        ]
+      }

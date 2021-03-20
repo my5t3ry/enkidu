@@ -16,4 +16,4 @@ class ConfigListOutputFormats(PrivatTask):
     for cur_formater in get_all_formatters():
       result = result + ("".join(cur_formater.filenames))
     return {
-      "text": json.dumps(result.replace("*", ", *"))}
+      "text": result.replace("*", ", *")}

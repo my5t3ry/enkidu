@@ -17,10 +17,8 @@ class ConstantsService:
 
   @staticmethod
   def get_value(key):
-    return ConstantsService.const[key] if key in ConstantsService.const else None
+    return ConstantsService.const[
+      key] if key in ConstantsService.const else None
 
   def get_constant(self):
     print(f'{self.real}+{self.imag}j')
-
-
-

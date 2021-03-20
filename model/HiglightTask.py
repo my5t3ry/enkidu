@@ -1,6 +1,6 @@
 from pygments import highlight
 from pygments.formatters.html import HtmlFormatter
-from pygments.formatters.img import JpgImageFormatter
+from pygments.formatters.img import ImageFormatter
 from pygments.lexers import guess_lexer
 from pygments.styles import get_style_by_name
 
@@ -29,14 +29,15 @@ class HighlightTask(Task):
         'enkidu_url') + '/img/' + jpg_file_name
     self.html_url = ConstantsService.get_value(
         'enkidu_url') + '/html/' + html_file_name
-    jpg_formatter = JpgImageFormatter(
-        style=get_style_by_name(self.user_config['theme']))
+    image_formater = ImageFormatter(
+        style=get_style_by_name(self.user_config['theme']),
+        font_size=self.user_config['image-fontsize'])
     html_formatter = HtmlFormatter(
         style=get_style_by_name(self.user_config['theme']))
     html_formatter.noclasses = True
     html_formatter.linenos = True
     lexer = guess_lexer(self.code.encode())
-    jpg_result = highlight(self.code, lexer, jpg_formatter)
+    jpg_result = highlight(self.code, lexer, image_formater)
     html_result = highlight(self.code, lexer, html_formatter)
     open(img_file_path, 'wb').write(jpg_result)
     with open(html_file_path, "w") as f:

@@ -1,3 +1,4 @@
 {
-  "theme": "native"
+  "theme": "native",
+  "image-fontsize": "18"
 }

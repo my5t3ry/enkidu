@@ -13,11 +13,26 @@ jpeg output
 ![response example](http://data.shitkatapult.org/enkidu_themed3.png)
 
 #### commands:
+send to private chat with enkidu
 
 ``
 /me {somecode}
 ``
 
+send to  group chat
+
 ``
 /public {target group} {somecode}
+``
+
+show config
+
+``
+/conf 
+``
+
+save config
+
+``
+/conf -e  {config json}
 ``

@@ -3,11 +3,13 @@ import re
 from model.PrivateHighlightTask import PrivateHighlightTask
 from model.PublicHighlightTask import PublicHighlightTask
 from model.config.Config import config_registry
+from model.json.Json import json_registry
 from model.str.Str import str_registry
 
 task_registry = {'/me': {'default': PrivateHighlightTask},
                  '/public': {'default': PublicHighlightTask},
                  '/str': str_registry,
+                 '/json': json_registry,
                  '/config': config_registry,
                  'default': PrivateHighlightTask,
                  }

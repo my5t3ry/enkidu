@@ -16,4 +16,4 @@ class StrToUpperTask(PrivatTask):
 
   def get_message(self):
     return {
-      "text": json.dumps("```\n"+self.payload.upper()+"\n```")}
+      "text": "```\n" + self.payload.lower() + "\n```"}

@@ -2,7 +2,7 @@
   "configCompleteRedirectUrl": "https://chat.google.com/api/bot_config_complete?token=AAJCfVXOf7nmMlNnhrVT86-W167jo6Pacy4IHbFFaVmhhEVwH-1jviCW8vJPxSRURow3d-JCE0O8Twt7UBpAF__z7jIr3xmkMzX39rfusmUB3heixQaF_9Wn0SSOUwQVFfWRUnQDi9qvSUbJ42Stm8E%3D",
   "eventTime": "2021-03-20T04:55:28.824271Z",
   "message": {
-    "argumentText": "/me \nclass TaskBuilder:\n  @staticmethod\n  def build_task(event):\n    return TaskBuilder.match_command(task_registry,\n                                     event, event['message']['text'])\n\n  @staticmethod\n  def match_command(registry, event, cmd):\n    match = p.search(cmd)\n    if len(match.groups()) > 0 and match.groups()[0] in registry and type(\n        registry[match.groups()[0]]) is dict:\n      return TaskBuilder.match_command(registry[match.groups()[0]], event,\n                                       cmd.replace(match.groups()[0] + ' ', \"\"))",
+    "argumentText": "/str -tl sffagOJFOIJFWFIWPOFJ",
     "createTime": "2021-03-20T04:55:28.824271Z",
     "name": "spaces/sVBZ8wAAAAE/messages/1RKCICeswk4.1RKCICeswk4",
     "sender": {
@@ -18,7 +18,7 @@
       "singleUserBotDm": true,
       "type": "DM"
     },
-    "text": "/me \nclass TaskBuilder:\n  @staticmethod\n  def build_task(event):\n    return TaskBuilder.match_command(task_registry,\n                                     event, event['message']['text'])\n\n  @staticmethod\n  def match_command(registry, event, cmd):\n    match = p.search(cmd)\n    if len(match.groups()) > 0 and match.groups()[0] in registry and type(\n        registry[match.groups()[0]]) is dict:\n      return TaskBuilder.match_command(registry[match.groups()[0]], event,\n                                       cmd.replace(match.groups()[0] + ' ', \"\"))",
+    "text": "/json -v asddas",
     "thread": {
       "name": "spaces/sVBZ8wAAAAE/threads/1RKCICeswk4",
       "retentionSettings": {

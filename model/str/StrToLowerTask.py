@@ -1,12 +1,10 @@
-import json
-
 from model.PrivatTask import PrivatTask
 
 
 class StrToLowerTask(PrivatTask):
 
   def __init__(self, event, payload):
-    super(StrToUpperTask, self).__init__(event, payload)
+    super(StrToLowerTask, self).__init__(event, payload)
 
   def run(self):
     pass
@@ -16,4 +14,4 @@ class StrToLowerTask(PrivatTask):
 
   def get_message(self):
     return {
-      "text": json.dumps("```\n"+self.payload.lower()+"\n```")}
+      "text": "```\n" + self.payload.lower() + "\n```"}

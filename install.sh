@@ -6,8 +6,7 @@ pip3 install \
   google-auth \
   google-auth-httplib2 \
   google-api-python-client \
-  google-api-python-client \
-  jsonschema \
+  simpel_eval \
   flask \
   uuid
 

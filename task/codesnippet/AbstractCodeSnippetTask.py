@@ -41,7 +41,6 @@ class AbstractCodeSnippetTask(Task):
           str.encode(result) if type(result) is str else result)
       self.urls.append(file_url)
 
-  @property
   def get_message(self):
     links = ""
     for url in self.urls:
@@ -84,7 +83,7 @@ class AbstractCodeSnippetTask(Task):
         "cards": [
           {
             "sections": [
-              links
+              link_widget
             ]
           }
         ]

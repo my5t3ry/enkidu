@@ -17,3 +17,5 @@ class ConfigListOutputFormats(PrivatTask):
       result = result + ("".join(cur_formater.filenames))
     return {
       "text": result.replace("*", ", *")}
+
+

@@ -10,6 +10,9 @@ class ConfigTask(PrivatTask):
     super(ConfigTask, self).__init__(event)
     self.user_config = event['user_config']
 
+  def run(self):
+    pass
+
   def get_data(self):
     print(f'{self.real}+{self.imag}j')
 

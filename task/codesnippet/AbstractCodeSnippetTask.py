@@ -5,16 +5,16 @@ from pygments.lexers import guess_lexer
 from pygments.styles import get_style_by_name
 
 from components.constant_service.ConsstantsService import ConstantsService
-from model.Task import Task
+from task.Task import Task
 
 
-class HighlightTask(Task):
+class AbstractCodeSnippetTask(Task):
   user_config = None
   html_url = None
   img_url = None
 
   def __init__(self, event, payload):
-    super(HighlightTask, self).__init__(event, payload)
+    super(AbstractCodeSnippetTask, self).__init__(event, payload)
     self.user_config = event['user_config']
 
   def run(self):
@@ -53,7 +53,7 @@ class HighlightTask(Task):
                 {
                   "image": {
                     "imageUrl": self.img_url,
-                    "aspectRatio":3,
+                    "aspectRatio": 3,
                     "onClick": {
                       "openLink": {
                         "url": self.html_url

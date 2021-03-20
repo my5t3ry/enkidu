@@ -1,10 +1,10 @@
-from model.PrivatTask import PrivatTask
+from task.PrivatTask import PrivatTask
 
 
-class StrToLowerTask(PrivatTask):
+class StrToUpperTask(PrivatTask):
 
   def __init__(self, event, payload):
-    super(StrToLowerTask, self).__init__(event, payload)
+    super(StrToUpperTask, self).__init__(event, payload)
 
   def run(self):
     pass

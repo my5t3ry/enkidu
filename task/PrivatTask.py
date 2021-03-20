@@ -1,4 +1,4 @@
-from model.Task import Task
+from task.Task import Task
 
 
 class PrivatTask(Task):

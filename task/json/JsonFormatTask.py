@@ -1,8 +1,6 @@
-import json
-
 from pprintjson import pprintjson as ppjson
 
-from model.PrivatTask import PrivatTask
+from task.PrivatTask import PrivatTask
 
 
 class JsonFormatTask(PrivatTask):

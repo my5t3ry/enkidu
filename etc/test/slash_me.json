@@ -18,7 +18,7 @@
       "singleUserBotDm": true,
       "type": "DM"
     },
-    "text": "/json -f {\n  \"theme\": \"native\",\n  \"image-fontsize\": \"18\"}",
+    "text": "/cs  @app.route('/html/<path:filename>')\ndef html(filename):\n  global constants_service\n  try:\n    return send_from_directory(ConstantsService.get_value('html_store'),\n                               filename)\n  except IOError:\n    abort(404)",
     "thread": {
       "name": "spaces/sVBZ8wAAAAE/threads/1RKCICeswk4",
       "retentionSettings": {

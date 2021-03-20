@@ -1,12 +1,10 @@
-import json
-
-from model.PrivatTask import PrivatTask
+from task.PrivatTask import PrivatTask
 
 
-class StrToUpperTask(PrivatTask):
+class StrToLowerTask(PrivatTask):
 
   def __init__(self, event, payload):
-    super(StrToUpperTask, self).__init__(event, payload)
+    super(StrToLowerTask, self).__init__(event, payload)
 
   def run(self):
     pass

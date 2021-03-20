@@ -1,8 +1,6 @@
-import json
-
-from model.PrivatTask import PrivatTask
 from simpleeval import simple_eval
 
+from task.PrivatTask import PrivatTask
 
 
 class ArithmeticEval(PrivatTask):

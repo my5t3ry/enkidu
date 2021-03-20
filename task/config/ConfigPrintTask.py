@@ -1,6 +1,6 @@
 import json
 
-from model.PrivatTask import PrivatTask
+from task.PrivatTask import PrivatTask
 
 
 class ConfigPrintTask(PrivatTask):

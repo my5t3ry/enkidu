@@ -8,7 +8,7 @@ from googleapiclient.discovery import build
 
 from components.constant_service.ConsstantsService import ConstantsService
 from components.settings_repository.SettingsRepository import SettingsRepository
-from model.TaskBuilder import TaskBuilder
+from task.TaskBuilder import TaskBuilder
 
 settings_repository = SettingsRepository()
 

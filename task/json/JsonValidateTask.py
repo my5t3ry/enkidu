@@ -2,7 +2,7 @@ import json
 
 from jsonschema import Draft7Validator
 
-from model.PrivatTask import PrivatTask
+from task.PrivatTask import PrivatTask
 
 
 class JsonValidateTask(PrivatTask):

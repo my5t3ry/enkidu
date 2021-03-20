@@ -1,7 +1,7 @@
 import json
 
 from components.settings_repository.SettingsRepository import SettingsRepository
-from model.PrivatTask import PrivatTask
+from task.PrivatTask import PrivatTask
 
 
 class ConfigEditTask(PrivatTask):

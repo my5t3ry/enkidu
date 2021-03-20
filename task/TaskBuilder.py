@@ -1,19 +1,19 @@
 import re
 
-from model.PrivateHighlightTask import PrivateHighlightTask
-from model.PublicHighlightTask import PublicHighlightTask
-from model.arithmetic.Arithmetic import arithmetic_registry
-from model.config.Config import config_registry
-from model.json.Json import json_registry
-from model.str.Str import str_registry
+from task.arithmetic.Arithmetic import arithmetic_registry
+from task.codesnippet.PrivateCodeSnippetTask import PrivateCodeSnippetTask
+from task.codesnippet.PublicCodeSnippetTask import PublicCodeSnippetTask
+from task.config.Config import config_registry
+from task.json.Json import json_registry
+from task.str.Str import str_registry
 
-task_registry = {'/me': {'default': PrivateHighlightTask},
-                 '/public': {'default': PublicHighlightTask},
+task_registry = {'/cs': {'default': PrivateCodeSnippetTask,
+                         '-p': PublicCodeSnippetTask},
                  '/str': str_registry,
                  '/json': json_registry,
                  '/arit': arithmetic_registry,
                  '/config': config_registry,
-                 'default': PrivateHighlightTask,
+                 'default': PrivateCodeSnippetTask,
                  }
 
 p = re.compile('([^\s]+)')

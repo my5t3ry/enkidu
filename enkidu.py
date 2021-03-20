@@ -71,10 +71,10 @@ def home_post():
   cur_task.run()
 
   result = chat.spaces().messages().create(
-    parent=cur_task.get_target_space_name(),
-    body=cur_task.get_message()).execute()
+      parent=cur_task.get_target_space_name(),
+      body=cur_task.get_message()).execute()
 
-
+  logging.info("message result ['%s']", json.dumps(result))
 
   return json.jsonify({})
 

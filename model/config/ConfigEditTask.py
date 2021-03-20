@@ -18,7 +18,7 @@ class ConfigEditTask(PrivatTask):
     except Exception as e:
       self.parseError = {
         "save failed": "could not parse json [{}] exception [{}]".format(
-          payload, e)}
+            payload, e)}
 
   def run(self):
     if self.parseError == None:

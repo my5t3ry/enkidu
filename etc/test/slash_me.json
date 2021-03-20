@@ -1,43 +1,43 @@
 {
-  "type": "MESSAGE",
-  "eventTime": "2021-03-19T18:58:27.235487Z",
+  "configCompleteRedirectUrl": "https://chat.google.com/api/bot_config_complete?token=AAJCfVXOf7nmMlNnhrVT86-W167jo6Pacy4IHbFFaVmhhEVwH-1jviCW8vJPxSRURow3d-JCE0O8Twt7UBpAF__z7jIr3xmkMzX39rfusmUB3heixQaF_9Wn0SSOUwQVFfWRUnQDi9qvSUbJ42Stm8E%3D",
+  "eventTime": "2021-03-20T04:55:28.824271Z",
   "message": {
-    "name": "spaces/sVBZ8wAAAAE/messages/d40PxbBYjqU.d40PxbBYjqU",
+    "argumentText": "/me \nclass TaskBuilder:\n  @staticmethod\n  def build_task(event):\n    return TaskBuilder.match_command(task_registry,\n                                     event, event['message']['text'])\n\n  @staticmethod\n  def match_command(registry, event, cmd):\n    match = p.search(cmd)\n    if len(match.groups()) > 0 and match.groups()[0] in registry and type(\n        registry[match.groups()[0]]) is dict:\n      return TaskBuilder.match_command(registry[match.groups()[0]], event,\n                                       cmd.replace(match.groups()[0] + ' ', \"\"))",
+    "createTime": "2021-03-20T04:55:28.824271Z",
+    "name": "spaces/sVBZ8wAAAAE/messages/1RKCICeswk4.1RKCICeswk4",
     "sender": {
-      "name": "users/115408569395812721682",
-      "displayName": "Sascha Bast",
       "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
+      "displayName": "Sascha Bast",
+      "domainId": "3f8yvml",
       "email": "sascha.bast@dgm-kommunikation.de",
-      "type": "HUMAN",
-      "domainId": "3f8yvml"
-    },
-    "createTime": "2021-03-19T18:58:27.235487Z",
-    "text": "/config -e {\"theme\": \"native\", \"image-fontsize\": \"18\"}\n",
-    "thread": {
-      "name": "spaces/sVBZ8wAAAAE/threads/d40PxbBYjqU",
-      "retentionSettings": {
-        "state": "PERMANENT"
-      }
+      "name": "users/115408569395812721682",
+      "type": "HUMAN"
     },
     "space": {
       "name": "spaces/sVBZ8wAAAAE",
-      "type": "DM",
-      "singleUserBotDm": true
+      "singleUserBotDm": true,
+      "type": "DM"
     },
-    "argumentText": "/me @app.route('/html/<path:filename>')\ndef html(filename):\n  try:\n    return send_from_directory('/root/html/', filename)\n  except IOError:\n    abort(404)\n\n\ndef resolve_target(event_data, cur_task, cur_spaces_ctx):\n  if isinstance(cur_task, PrivateHighlightTask):\n    return event_data['space']['name']\n  else:\n    for cur_space in cur_spaces_ctx:\n      if cur_task.target_display_name.lower() in cur_space[\n        'displayName'].lower():\n        return cur_space['name']"
-  },
-  "user": {
-    "name": "users/115408569395812721682",
-    "displayName": "Sascha Bast",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
-    "email": "sascha.bast@dgm-kommunikation.de",
-    "type": "HUMAN",
-    "domainId": "3f8yvml"
+    "text": "/me \nclass TaskBuilder:\n  @staticmethod\n  def build_task(event):\n    return TaskBuilder.match_command(task_registry,\n                                     event, event['message']['text'])\n\n  @staticmethod\n  def match_command(registry, event, cmd):\n    match = p.search(cmd)\n    if len(match.groups()) > 0 and match.groups()[0] in registry and type(\n        registry[match.groups()[0]]) is dict:\n      return TaskBuilder.match_command(registry[match.groups()[0]], event,\n                                       cmd.replace(match.groups()[0] + ' ', \"\"))",
+    "thread": {
+      "name": "spaces/sVBZ8wAAAAE/threads/1RKCICeswk4",
+      "retentionSettings": {
+        "state": "PERMANENT"
+      }
+    }
   },
   "space": {
     "name": "spaces/sVBZ8wAAAAE",
-    "type": "DM",
-    "singleUserBotDm": true
+    "singleUserBotDm": true,
+    "type": "DM"
   },
-  "configCompleteRedirectUrl": "https://chat.google.com/api/bot_config_complete?token=AAJCfVUBsDTrrSOv26KVrrdli7jW1Yt7LDn9JcctjP1Mb6XIBKSyod20WU-97oy1uodbtqtWQG-4125zITpP_2NtFIVxPbS8ZaTQ_20QRH5o1_nc51RajD802IgFA1LfoyiLjRcoC5g7cJ8he_2xg0g%3D"
+  "type": "MESSAGE",
+  "user": {
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/AOh14GjXYpL5CX8SHegBUm50c7V6LNEAli_JHcRUdA6wMw=k",
+    "displayName": "Sascha Bast",
+    "domainId": "3f8yvml",
+    "email": "sascha.bast@dgm-kommunikation.de",
+    "name": "users/115408569395812721682",
+    "type": "HUMAN"
+  }
 }

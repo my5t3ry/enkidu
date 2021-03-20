@@ -5,14 +5,14 @@ from model.Task import Task
 
 class PublicTask(Task):
 
-  def __init__(self,event,payload):
+  def __init__(self, event, payload):
     p = re.compile('([^\s]+)')
     match = p.search(payload)
     target_display_name = match.groups()[0]
     payload = payload.replace(
         ' ' + target_display_name + ' ', "")
-    super(PublicTask, self).__init__(payload )
-    self.target_space_name=self.find_target_space_name(
+    super(PublicTask, self).__init__(event, payload)
+    self.target_space_name = self.find_target_space_name(
         target_display_name, event['spaces_ctx'])
 
   def get_data(self):

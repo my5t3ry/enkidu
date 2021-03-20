@@ -14,7 +14,7 @@ class HighlightTask(Task):
   img_url = None
 
   def __init__(self, event, payload):
-    super(HighlightTask, self).__init__(payload)
+    super(HighlightTask, self).__init__(event, payload)
     self.user_config = event['user_config']
 
   def run(self):

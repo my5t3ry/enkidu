@@ -29,11 +29,11 @@ class TaskBuilder:
     else:
       return registry[match.groups()[0]](event,
                                          TaskBuilder.strip_slash_command(
-                                           registry, cmd)
+                                             registry, cmd)
                                          ) if match.groups()[0] in registry else \
-      registry["default"](event,
-                          TaskBuilder.strip_slash_command(registry, cmd)
-                          )
+        registry["default"](event,
+                            TaskBuilder.strip_slash_command(registry, cmd)
+                            )
 
   @staticmethod
   def strip_slash_command(registry, cmd):

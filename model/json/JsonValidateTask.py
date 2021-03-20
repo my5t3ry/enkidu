@@ -14,7 +14,7 @@ class JsonValidateTask(PrivatTask):
   def run(self):
     instance = [{}, 3, "foo"]
     try:
-      v = Draft7Validator(self.payload)
+      v = Draft7Validator(json.loads(self.payload))
       errors = sorted(v.iter_errors(instance), key=lambda e: e.path)
       for error in errors:
         for suberror in sorted(error.context, key=lambda e: e.schema_path):
@@ -33,4 +33,4 @@ class JsonValidateTask(PrivatTask):
     response = self.validation_result if len(
         self.validation_result) > 0 else "json is valide"
     return {
-      "text": "```\n" + self.validation_result + "\n```"}
+      "text": "```\n" + response + "\n```"}

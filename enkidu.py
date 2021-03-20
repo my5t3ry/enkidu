@@ -72,7 +72,7 @@ def home_post():
 
   chat.spaces().messages().create(
       parent=cur_task.get_target_space_name(),
-      thread_id="code snippets",
+      thread_id="code-snippets",
       body=cur_task.get_message()).execute()
 
   return json.jsonify({})

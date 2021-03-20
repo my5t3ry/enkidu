@@ -10,16 +10,8 @@ class JsonValidateTask(PrivatTask):
     super(JsonValidateTask, self).__init__(event, payload)
 
   def run(self):
-    schema = {
-      "items": {
-        "anyOf": [
-          {"type": "string", "maxLength": 2},
-          {"type": "integer", "minimum": 5}
-        ]
-      }
-    }
     instance = [{}, 3, "foo"]
-    v = Draft7Validator(schema)
+    v = Draft7Validator(self.payload)
     errors = sorted(v.iter_errors(instance), key=lambda e: e.path)
     for error in errors:
       for suberror in sorted(error.context, key=lambda e: e.schema_path):

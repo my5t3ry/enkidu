@@ -1,8 +1,8 @@
 from components.constant_service.ConsstantsService import ConstantsService
-from task.PublicTask import PublicTask
+from task.PrivatTask import PrivatTask
 
 
-class Help(PublicTask):
+class Help(PrivatTask):
 
   def __init__(self, event, payload):
     super(Help, self).__init__(event, payload)

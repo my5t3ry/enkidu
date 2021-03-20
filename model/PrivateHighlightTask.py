@@ -1,8 +1,11 @@
-class PrivateHighlightTask:
-  code = None
+from model.HiglightTask import HighlightTask
+from model.PrivatTask import PrivatTask
 
-  def __init__(self, code):
-    self.code=code
+
+class PrivateHighlightTask(HighlightTask, PrivatTask):
+
+  def __init__(self, event):
+    super(PrivateHighlightTask, self).__init__(event)
 
   def get_data(self):
     print(f'{self.real}+{self.imag}j')

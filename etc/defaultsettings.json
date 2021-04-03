@@ -1,8 +1,8 @@
 {
   "theme": "native",
-  "image-fontsize": "18",
+  "image-fontsize": "14",
   "codesnippet-formats": [
     "html",
-    "jpg"
+    "png"
   ]
 }

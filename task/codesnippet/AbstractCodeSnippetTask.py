@@ -33,12 +33,11 @@ class AbstractCodeSnippetTask(Task):
                                              style=get_style_by_name(
                                                  self.user_config['theme']),
                                              font_size=self.user_config[
-                                               'image-fontsize'])
+                                               'image-fontsize'],
+                                             noclasses=True,
+                                             linenos=True)
       if "jpg" in file_name or "gif" in file_name or "png" in file_name:
         self.img_url = file_url
-
-      formatter.noclasses = True
-      formatter.linenos = True
 
       formatter.title = self.create_snippet_title()
       formatter.full = True

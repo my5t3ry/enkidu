@@ -7,8 +7,9 @@ HOHOHOHOHOHOHOHOHOHOHOHOHOHOHOHOHO
 commands:
 
 /help                       this
-/cs    {src}                codesnippets private
-/cs -p {name} {src}         codesnippets to group
+
+/cs    {str}                codesnippets private
+/cs -p {group name} {str}   codesnippets to group
 
 /config                     shows user config
 /config -e {cfg_json}       edits config
@@ -19,7 +20,7 @@ commands:
 /str -tl  {str}             string to lower
 /str -tu  {str}             string to upper
 /str -url {str}             url encode string
-/str -rnd {str}             random string[16]
+/str -rnd                   random string[16]
 
 /json -v {json}             validaton\linter
 /json -f {json}             pretty print json

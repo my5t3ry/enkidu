@@ -13,7 +13,9 @@ class ConstantsService:
     "default_settings_path": os.path.join(expanduser("~"),
                                           '.enkidu/defaultsettings.json'),
     "credentials": os.path.join(expanduser("~"),
-                                '.enkidu/cred.json')
+                                '.enkidu/cred.json'),
+    "public_key_file": os.path.join(expanduser("~"),
+                                '.ssh/id_rsa.pub')
   }
 
   @staticmethod

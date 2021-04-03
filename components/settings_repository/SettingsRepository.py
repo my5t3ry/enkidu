@@ -8,17 +8,17 @@ class SettingsRepository:
 
   def get_settings(self, user_name):
     with dbm.open(ConstantsService.get_value('db_path'), 'c') as db:
-      return json.loads(db[user_name]) if user_name in db else json.loads(
-          self.init_default_settings(
-              db,
-              user_name, "unknown player one"))
+      return json.loads(
+          db[user_name]) if user_name in db else self.init_default_settings(
+          db,
+          user_name, "unknown player one")
 
   def get_settings_and_init(self, user_name, display_name):
     with dbm.open(ConstantsService.get_value('db_path'), 'c') as db:
-      return json.loads(db[user_name]) if user_name in db else json.loads(
-          self.init_default_settings(
-              db,
-              user_name, display_name))
+      return json.loads(
+          db[user_name]) if user_name in db else self.init_default_settings(
+          db,
+          user_name, display_name)
 
   def get_setting_value(self, user_name, key):
     settings = self.get_settings(user_name)

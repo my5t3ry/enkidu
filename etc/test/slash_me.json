@@ -2,7 +2,7 @@
   "configCompleteRedirectUrl": "https://chat.google.com/api/bot_config_complete?token=AAJCfVXOf7nmMlNnhrVT86-W167jo6Pacy4IHbFFaVmhhEVwH-1jviCW8vJPxSRURow3d-JCE0O8Twt7UBpAF__z7jIr3xmkMzX39rfusmUB3heixQaF_9Wn0SSOUwQVFfWRUnQDi9qvSUbJ42Stm8E%3D",
   "eventTime": "2021-03-20T04:55:28.824271Z",
   "message": {
-    "argumentText": "/str -tl sffagOJFOIJFWFIWPOFJ",
+    "argumentText": "/net --whois shitkatapult.org",
     "createTime": "2021-03-20T04:55:28.824271Z",
     "name": "spaces/sVBZ8wAAAAE/messages/1RKCICeswk4.1RKCICeswk4",
     "sender": {
@@ -18,7 +18,7 @@
       "singleUserBotDm": true,
       "type": "DM"
     },
-    "text": "\n/import re\n\nfrom task.arithmetic.Arithmetic import arithmetic_registry\nfrom task.codesnippet.PrivateCodeSnippetTask import PrivateCodeSnippetTask\nfrom task.codesnippet.PublicCodeSnippetTask import PublicCodeSnippetTask\nfrom task.config.Config import config_registry\nfrom task.help.Help import Help\nfrom task.json.Json import json_registry\nfrom task.str.Str import str_registry\n\ntask_registry = {'/cs': {'default': PrivateCodeSnippetTask,\n                         '-p': PublicCodeSnippetTask},\n                 '/str': str_registry,\n                 '/json': json_registry,\n                 '/arit': arithmetic_registry,\n                 '/config': config_registry,\n                 '/help': Help,\n                 'default': PrivateCodeSnippetTask,\n                 }\n\np = re.compile('([^\\s]+)')\n\n\nclass TaskBuilder:\n  @staticmethod\n  def build_task(event):\n    return TaskBuilder.match_command(task_registry,\n                                     event, event['message']['text'])\n\n  @staticmethod\n  def match_command(registry, event, cmd):\n    match = p.search(cmd)\n    if len(match.groups()) > 0 and match.groups()[0] in registry and type(\n        registry[match.groups()[0]]) is dict:\n      return TaskBuilder.match_command(registry[match.groups()[0]], event,\n                                       cmd.replace(match.groups()[0] + ' ', \"\"))\n    else:\n      return registry[match.groups()[0]](event,\n                                         TaskBuilder.strip_slash_command(\n                                             registry, cmd)\n                                         ) if match.groups()[0] in registry else \\\n        registry[\"default\"](event,\n                            TaskBuilder.strip_slash_command(registry, cmd)\n                            )\n\n  @staticmethod\n  def strip_slash_command(registry, cmd):\n    result = cmd\n    for cur_slash_command in registry.keys():\n      result = result.replace(cur_slash_command + ' ', '')\n    return result\n",
+    "text": "/net --whois shitkatapult.org",
     "thread": {
       "name": "spaces/sVBZ8wAAAAE/threads/1RKCICeswk4",
       "retentionSettings": {

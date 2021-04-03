@@ -27,12 +27,14 @@ class AbstractCodeSnippetTask(Task):
           'dist_store') + "/" + file_name
       file_url = ConstantsService.get_value(
           'enkidu_url') + '/dist/' + file_name
-      formatter = get_formatter_for_filename(file_name)
+      formatter = get_formatter_for_filename(file_name,
+                                             style=get_style_by_name(
+                                                 self.user_config['theme']),
+                                             font_size=self.user_config[
+                                               'image-fontsize'])
       if "jpg" in file_name or "gif" in file_name:
         self.img_url = file_url
 
-      formatter.style = get_style_by_name(self.user_config['theme'])
-      formatter.font_size = self.user_config['image-fontsize']
       formatter.noclasses = True
       formatter.linenos = True
       lexer = guess_lexer(self.payload.encode())

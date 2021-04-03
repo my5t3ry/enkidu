@@ -1,5 +1,4 @@
 import json
-import subprocess
 
 import jsbeautifier
 import whois
@@ -7,10 +6,10 @@ import whois
 from task.PrivatTask import PrivatTask
 
 
-class NetPingTask(PrivatTask):
+class NetWhoisTask(PrivatTask):
 
   def __init__(self, event, payload):
-    super(NetPingTask, self).__init__(event, payload)
+    super(NetWhoisTask, self).__init__(event, payload)
 
   def run(self):
     self.domain = whois.query(self.payload)
@@ -20,8 +19,8 @@ class NetPingTask(PrivatTask):
     print(f'{self.real}+{self.imag}j')
 
   def get_message(self):
-    result = subprocess.check_output(
-        "ping -c 5 "+self.payload, shell=True)
+    opts = jsbeautifier.default_options()
     opts.indent_size = 2
     return {
-      "text": "```\n" + result + "\n```"}
+      "text": "```\n" + jsbeautifier.beautify(str(self.domain.__dict__),
+                                              opts) + "\n```"}

@@ -34,7 +34,7 @@ class AbstractCodeSnippetTask(Task):
                                                  self.user_config['theme']),
                                              font_size=self.user_config[
                                                'image-fontsize'])
-      if "jpg" in file_name or "gif" or "png" in file_name:
+      if "jpg" in file_name or "gif" in file_name or "png" in file_name:
         self.img_url = file_url
 
       formatter.noclasses = True

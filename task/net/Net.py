@@ -1,4 +1,5 @@
-from task.net.NetWhoisTask import NetWhoisTask, NetPingTask
+from task.net.NetPingTask import NetPingTask
+from task.net.NetWhoisTask import NetWhoisTask
 
 net_registry = {
   '--whois': NetWhoisTask,

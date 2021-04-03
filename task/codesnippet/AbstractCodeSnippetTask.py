@@ -69,7 +69,7 @@ class AbstractCodeSnippetTask(Task):
                     "aspectRatio": 3,
                     "onClick": {
                       "openLink": {
-                        "url": self.html_url
+                        "url": self.img_url
                       }
                     }
                   }

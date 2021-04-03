@@ -39,6 +39,9 @@ commands:
 /str -url {str}             url encode string
 /str -rnd                   random string[16]
 
+/net --whois {str}          whois query
+/net --ping  {str}           ping host
+
 /json -v {json}             validaton\linter
 /json -f {json}             pretty print json
 

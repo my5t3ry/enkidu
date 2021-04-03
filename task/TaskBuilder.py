@@ -6,6 +6,7 @@ from task.codesnippet.PublicCodeSnippetTask import PublicCodeSnippetTask
 from task.config.Config import config_registry
 from task.help.Help import Help
 from task.json.Json import json_registry
+from task.net.Net import net_registry
 from task.str.Str import str_registry
 
 task_registry = {'/cs': {'default': PrivateCodeSnippetTask,
@@ -14,6 +15,7 @@ task_registry = {'/cs': {'default': PrivateCodeSnippetTask,
                  '/json': json_registry,
                  '/arit': arithmetic_registry,
                  '/config': config_registry,
+                 '/net': net_registry,
                  '/help': Help,
                  'default': PrivateCodeSnippetTask,
                  }

@@ -9,6 +9,7 @@ pip3 install \
   google-api-python-client \
   simpleeval \
   jsbeautifier \
+  whois \
   shortuuid \
   quote \
   flask \

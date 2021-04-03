@@ -32,5 +32,5 @@ class SettingsRepository:
     with open(ConstantsService.get_value('default_settings_path')) as json_file:
       default_settings = json.loads(json_file.read())
       default_settings["display_name"] = display_name
-      db[user_name] = json.dump(default_settings)
+      db[user_name] = json.dumps(default_settings)
       return default_settings

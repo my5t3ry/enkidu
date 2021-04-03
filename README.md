@@ -2,7 +2,7 @@
 
 #### Endpoint provider for enkidu google chat bot
 
-generates highlighted jpg/html source from private messages. will reply as DM or group. example:
+generates highlighted codesnippets from private messages. will reply as DM or group. example:
 
 html output
 -> [https://enkidu.dgm-it.de/html/351ef14bc57345d0bc6fc4251b1055ad.html](https://enkidu.dgm-it.de/html/351ef14bc57345d0bc6fc4251b1055ad.html)
@@ -12,28 +12,37 @@ jpeg output
 
 ![response example](http://data.shitkatapult.org/enkidu_themed3.png)
 
-#### commands:
+#### help:
 
-send to private chat with enkidu
+```
+              8     o     8
+.d88b  8d8b.  8.dP  .  .d88  8   8
+8.dP'  8P Y8  88b   8  8  8  8b d8
+`Y88P  8   8  8 Yb  8  `Y88  `Y8P8
+HOHOHOHOHOHOHOHOHOHOHOHOHOHOHOHOHO
 
-``
-/me {somecode}
-``
+commands:
 
-send to group chat
+/help                       this
 
-``
-/public {target group} {somecode}
-``
+/cs    {str}                codesnippet to private
+/cs -p {group name} {str}   codesnippet to group
 
-show config
+/config                     shows user config
+/config -e {cfg_json}       edits config
+/config --list-styles       list available codesnippet styles
+/config --list-formats      list available codesnippet formats
+/config --print-public-key  print enkidu public ssh key to grant git repo access
 
-``
-/conf
-``
+/str -tl  {str}             string to lower
+/str -tu  {str}             string to upper
+/str -url {str}             url encode string
+/str -rnd                   random string[16]
 
-save config
+/json -v {json}             validaton\linter
+/json -f {json}             pretty print json
 
-``
-/conf -e {config json}
-``
+/arit {str}                 evaluates arithmetic
+
+```
+

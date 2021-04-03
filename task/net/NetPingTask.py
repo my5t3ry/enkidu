@@ -13,7 +13,6 @@ class NetPingTask(PrivatTask):
     super(NetPingTask, self).__init__(event, payload)
 
   def run(self):
-    self.domain = whois.query(self.payload)
     pass
 
   def get_data(self):
@@ -22,6 +21,5 @@ class NetPingTask(PrivatTask):
   def get_message(self):
     result = subprocess.check_output(
         "ping -c 5 "+self.payload, shell=True)
-    opts.indent_size = 2
     return {
       "text": "```\n" + result + "\n```"}

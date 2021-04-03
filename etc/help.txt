@@ -16,13 +16,13 @@ commands:
 /config --list-formats      list available codesnippet styles
 /config --print-public-key  print enkidu public ssh key to grant git repo access
 
-/str -tl   {str}            string to lower
-/str -tu   {str}            string to upper
-/str -url  {str}            url encode string
-/str -rnd  {str}            random string[16]
+/str -tl  {str}             string to lower
+/str -tu  {str}             string to upper
+/str -url {str}             url encode string
+/str -rnd {str}             random string[16]
 
-/json -v   {json}           validaton\linter
-/json -f   {json}           pretty print json
+/json -v {json}             validaton\linter
+/json -f {json}             pretty print json
 
 /arit {str}                 evaluates arithmetic
 

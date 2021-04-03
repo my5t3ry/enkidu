@@ -8,8 +8,8 @@ commands:
 
 /help                       this
 
-/cs    {str}                codesnippets private
-/cs -p {group name} {str}   codesnippets to group
+/cs    {str}                codesnippet to private
+/cs -p {group name} {str}   codesnippet to group
 
 /config                     shows user config
 /config -e {cfg_json}       edits config

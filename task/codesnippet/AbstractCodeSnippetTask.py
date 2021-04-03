@@ -39,7 +39,6 @@ class AbstractCodeSnippetTask(Task):
       formatter.linenos = True
       formatter.cssstyles = True
       formatter.prestyles = True
-      formatter.full = True
       lexer = guess_lexer(self.payload.encode())
       result = highlight(self.payload, lexer, formatter)
       open(file_path, 'wb').write(

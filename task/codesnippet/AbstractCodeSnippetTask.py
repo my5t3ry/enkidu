@@ -1,3 +1,5 @@
+from datetime import date
+
 from pygments import highlight
 from pygments.formatters import get_formatter_for_filename
 from pygments.lexers import guess_lexer
@@ -37,7 +39,8 @@ class AbstractCodeSnippetTask(Task):
 
       formatter.noclasses = True
       formatter.linenos = True
-      formatter.title = "test"
+
+      formatter.title = self.create_snippet_title()
       formatter.full = True
       lexer = guess_lexer(self.payload.encode())
       result = highlight(self.payload, lexer, formatter)
@@ -92,3 +95,7 @@ class AbstractCodeSnippetTask(Task):
           }
         ]
       }
+
+  def create_snippet_title(self):
+    today = date.today()
+    return self.user_config['display_name'] + " @ " + today.strftime("%d/%m/%Y")

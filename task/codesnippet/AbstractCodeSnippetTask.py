@@ -9,7 +9,6 @@ from task.Task import Task
 
 class AbstractCodeSnippetTask(Task):
   user_config = None
-  html_url = None
   img_url = None
 
   urls = []
@@ -20,7 +19,8 @@ class AbstractCodeSnippetTask(Task):
 
   def run(self):
     global constants_service
-
+    self.img_url = None
+    self.urls = []
     for cur_format in self.user_config['codesnippet-formats']:
       file_name = self.uuid + "." + cur_format
       file_path = ConstantsService.get_value(
@@ -32,7 +32,7 @@ class AbstractCodeSnippetTask(Task):
                                                  self.user_config['theme']),
                                              font_size=self.user_config[
                                                'image-fontsize'])
-      if "jpg" in file_name or "gif" in file_name:
+      if "jpg" in file_name or "gif" or "png" in file_name:
         self.img_url = file_url
 
       formatter.noclasses = True

@@ -15,9 +15,6 @@ class NetPingTask(PrivatTask):
   def run(self):
     pass
 
-  def get_data(self):
-    print(f'{self.real}+{self.imag}j')
-
   def get_message(self):
     result = subprocess.check_output(
         "ping -c 5 "+self.payload, shell=True)

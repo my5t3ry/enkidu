@@ -36,7 +36,7 @@ class AbstractCodeSnippetTask(Task):
         self.img_url = file_url
 
       formatter.noclasses = True
-      formatter.linenos = True
+      formatter.linenos = "inline"
       lexer = guess_lexer(self.payload.encode())
       result = highlight(self.payload, lexer, formatter)
       open(file_path, 'wb').write(

@@ -37,6 +37,7 @@ class AbstractCodeSnippetTask(Task):
 
       formatter.noclasses = True
       formatter.linenos = True
+      formatter.title = "test"
       formatter.full = True
       lexer = guess_lexer(self.payload.encode())
       result = highlight(self.payload, lexer, formatter)

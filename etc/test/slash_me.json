@@ -18,7 +18,7 @@
       "singleUserBotDm": true,
       "type": "DM"
     },
-    "text": "/net ping 8.8.8.8",
+    "text": "/net --ping 8.8.8.8",
     "thread": {
       "name": "spaces/sVBZ8wAAAAE/threads/1RKCICeswk4",
       "retentionSettings": {

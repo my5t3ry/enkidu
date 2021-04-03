@@ -1,8 +1,4 @@
-import json
 import subprocess
-
-import jsbeautifier
-import whois
 
 from task.PrivatTask import PrivatTask
 
@@ -17,6 +13,6 @@ class NetPingTask(PrivatTask):
 
   def get_message(self):
     result = subprocess.check_output(
-        "ping -c 5 "+self.payload, shell=True)
+        "ping -c 5 " + self.payload, shell=True)
     return {
-      "text": "```\n" + result + "\n```"}
+      "text": "```\n" + result.decode("utf-8") + "\n```"}

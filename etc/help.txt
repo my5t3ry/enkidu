@@ -14,7 +14,7 @@ commands:
 /config                     shows user config
 /config -e {cfg_json}       edits config
 /config --list-styles       list available codesnippet styles
-/config --list-formats      list available codesnippet styles
+/config --list-formats      list available codesnippet formats
 /config --print-public-key  print enkidu public ssh key to grant git repo access
 
 /str -tl  {str}             string to lower

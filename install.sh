@@ -10,6 +10,7 @@ pip3 install \
   simpleeval \
   jsbeautifier \
   whois \
+  APScheduler \
   shortuuid \
   quote \
   flask \

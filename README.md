@@ -40,6 +40,7 @@ commands:
 ![https://data.shitkatapult.org/enkidu_1.png](https://data.shitkatapult.org/enkidu_1.png)
 ![https://data.shitkatapult.org/enkidu_4.png](https://data.shitkatapult.org/enkidu_4.png)
 ![https://data.shitkatapult.org/enkidu_3.png](https://data.shitkatapult.org/enkidu_3.png)
+![https://data.shitkatapult.org/enkidu_7.png](https://data.shitkatapult.org/enkidu_7.png)
 ![https://data.shitkatapult.org/enkidu_2.png](https://data.shitkatapult.org/enkidu_2.png)
 ![https://data.shitkatapult.org/enkidu_0.png](https://data.shitkatapult.org/enkidu_0.png)
 ![https://data.shitkatapult.org/enkidu_5.png](https://data.shitkatapult.org/enkidu_5.png)

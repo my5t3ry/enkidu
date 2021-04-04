@@ -8,4 +8,5 @@ str_registry = {
   '-tu': StrToUpperTask,
   '-url': StrUrlEncodeTask,
   '-rnd': StrRndTask,
+  'default': StrRndTask,
 }

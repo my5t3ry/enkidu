@@ -10,7 +10,7 @@ class NetScanTask(PrivatTask):
 
   def run(self):
     return {
-      "text": "scanning for active ips @ ['{}']".format(self.payload)}
+      "text": "scanning for active ips @ ['{}'] this can take a while ...".format(self.payload)}
     pass
 
   def get_message(self):

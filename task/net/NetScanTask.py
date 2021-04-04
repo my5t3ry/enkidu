@@ -15,6 +15,6 @@ class NetScanTask(PrivatTask):
 
   def get_message(self):
     result = subprocess.check_output(
-        "nmap -v -sn " + self.payload, shell=True)
+        "nmap -sn " + self.payload, shell=True)
     return {
       "text": "```\n" + result.decode("utf-8") + "\n```"}

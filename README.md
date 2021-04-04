@@ -2,7 +2,7 @@
 
 #### Endpoint provider for enkidu google chat bot
 
-does things:
+enkidu does things:
 
 
 ```              8     o     8

@@ -13,6 +13,6 @@ class NetScanTask(PrivatTask):
 
   def get_message(self):
     result = subprocess.check_output(
-        "arp-scan -I eth0 " + self.payload, shell=True)
+        "nmap -v -sn " + self.payload, shell=True)
     return {
       "text": "```\n" + result.decode("utf-8") + "\n```"}

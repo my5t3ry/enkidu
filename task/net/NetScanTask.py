@@ -9,6 +9,8 @@ class NetScanTask(PrivatTask):
     super(NetScanTask, self).__init__(event, payload)
 
   def run(self):
+    return {
+      "text": "scanning for active ips @ ['{}']".format(self.payload)}
     pass
 
   def get_message(self):

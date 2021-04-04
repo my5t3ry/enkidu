@@ -54,11 +54,15 @@ def home_post():
   cur_spaces_ctx = chat.spaces().list().execute()['spaces']
   event_data['spaces_ctx'] = cur_spaces_ctx
   event_data['user_config'] = settings_repository.get_settings_and_init(
-      event_data['user']['name'],event_data['user']['displayName'])
+      event_data['user']['name'], event_data['user']['displayName'])
   logging.info("Current bot spaces ['%s']", json.dumps(cur_spaces_ctx))
   cur_task = TaskBuilder.build_task(event_data)
   # logging.debug("current event ['%s']", json.dumps(cur_task))
-  cur_task.run()
+  async_message = cur_task.run()
+  if async_message is not None:
+    chat.spaces().messages().create(
+        parent=cur_task.get_target_space_name(),
+        body=async_message).execute()
   try:
     message = cur_task.get_message()
   except Exception as e:

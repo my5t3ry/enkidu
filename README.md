@@ -4,15 +4,8 @@
 
 does things:
 
--> [https://enkidu.dgm-it.de/dist/FMUgU9Nc.html](https://enkidu.dgm-it.de/dist/FMUgU9Nc.html)
 
-
-![response example](http://data.shitkatapult.org/enkidu_themed3.png)
-
-#### help:
-
-```
-              8     o     8
+```              8     o     8
 .d88b  8d8b.  8.dP  .  .d88  8   8
 8.dP'  8P Y8  88b   8  8  8  8b d8
 `Y88P  8   8  8 Yb  8  `Y88  `Y8P8
@@ -37,12 +30,15 @@ commands:
 /str -rnd                   random string[16]
 
 /net --whois {str}          whois query
-/net --ping  {str}           ping host
 
 /json -v {json}             validaton\linter
 /json -f {json}             pretty print json
 
 /arit {str}                 evaluates arithmetic
-
 ```
 
+[http://data.shitkatapult.org/enkidu_4.png](http://data.shitkatapult.org/enkidu_4.png)
+[http://data.shitkatapult.org/enkidu_3.png](http://data.shitkatapult.org/enkidu_3.png)
+[http://data.shitkatapult.org/enkidu_2.png](http://data.shitkatapult.org/enkidu_2.png)
+[http://data.shitkatapult.org/enkidu_1.png](http://data.shitkatapult.org/enkidu_1.png)
+[http://data.shitkatapult.org/enkidu_0.png](http://data.shitkatapult.org/enkidu_0.png)

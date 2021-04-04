@@ -49,9 +49,9 @@ def checkAsyncTasks():
       async_task_stack.remove(cur_task)
 
 
-sched = BackgroundScheduler(daemon=True)
-sched.add_job(checkAsyncTasks, 'interval', seconds=10)
-sched.start()
+# sched = BackgroundScheduler(daemon=True)
+# sched.add_job(checkAsyncTasks, 'interval', seconds=10)
+# sched.start()
 
 @app.route('/dist/<path:filename>')
 def dist(filename):

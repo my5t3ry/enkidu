@@ -3,14 +3,14 @@ from task.Task import Task
 
 class AsyncTask(Task):
   finished = False
-  msg = None
+  cur_message = None
 
   def __init__(self, event, payload):
     super(AsyncTask, self).__init__(event, payload)
     self.async_task = True
 
   def set_message(self, msg):
-    self.message = {
+    self.cur_message = {
       "text": msg}
 
   def get_target_space_name(self):

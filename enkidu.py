@@ -45,7 +45,7 @@ def checkAsyncTasks():
     if cur_task.is_finished():
       chat.spaces().messages().create(
           parent=cur_task.get_target_space_name(),
-          body=cur_task.message).execute()
+          body=cur_task.get_message()).execute()
       async_task_stack.remove(cur_task)
 
 
@@ -75,15 +75,15 @@ def home_post():
   logging.info("Current bot spaces ['%s']", json.dumps(cur_spaces_ctx))
   cur_task = TaskBuilder.build_task(event_data)
   # logging.debug("current event ['%s']", json.dumps(cur_task))
-  if cur_task.is_async_task:
-    asyncio.run(cur_task.run())
-    async_task_stack.append(cur_task)
-    chat.spaces().messages().create(
-        parent=cur_task.get_target_space_name(),
-        body=cur_task.get_message).execute()
-    return json.jsonify({})
-  else:
-    cur_task.run()
+  # if cur_task.is_async_task:
+  #   task = asyncio.run(cur_task.run())
+  #   async_task_stack.append(cur_task)
+  #   chat.spaces().messages().create(
+  #       parent=cur_task.get_target_space_name(),
+  #       body=cur_task.get_message()).execute()
+  #   return json.jsonify({})
+  # else:
+  cur_task.run()
   try:
     message = cur_task.get_message()
   except Exception as e:

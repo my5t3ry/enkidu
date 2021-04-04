@@ -1,7 +1,9 @@
 #!/usr/bin/python3 -u
+import asyncio
 import logging
 from logging.config import dictConfig
 
+from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, request, json, send_from_directory, abort
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -35,6 +37,21 @@ credentials = service_account.Credentials.from_service_account_file(
     scopes=ConstantsService.get_value('scopes'))
 chat = build('chat', 'v1', credentials=credentials)
 
+async_task_stack = []
+
+
+def checkAsyncTasks():
+  for cur_task in async_task_stack:
+    if cur_task.is_finished():
+      chat.spaces().messages().create(
+          parent=cur_task.get_target_space_name(),
+          body=cur_task.message).execute()
+      async_task_stack.remove(cur_task)
+
+
+sched = BackgroundScheduler(daemon=True)
+sched.add_job(checkAsyncTasks, 'interval', seconds=10)
+sched.start()
 
 @app.route('/dist/<path:filename>')
 def dist(filename):
@@ -58,11 +75,15 @@ def home_post():
   logging.info("Current bot spaces ['%s']", json.dumps(cur_spaces_ctx))
   cur_task = TaskBuilder.build_task(event_data)
   # logging.debug("current event ['%s']", json.dumps(cur_task))
-  async_message = cur_task.run()
-  if async_message is not None:
+  if cur_task.is_async_task:
+    asyncio.run(cur_task.run())
+    async_task_stack.append(cur_task)
     chat.spaces().messages().create(
         parent=cur_task.get_target_space_name(),
-        body=async_message).execute()
+        body=cur_task.get_message).execute()
+    return json.jsonify({})
+  else:
+    cur_task.run()
   try:
     message = cur_task.get_message()
   except Exception as e:
